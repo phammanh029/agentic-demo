@@ -1,0 +1,19 @@
+{
+  "name": "shop6-agentic-engineering-workshop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --format pdf",
+    "export:notes": "slidev export-notes"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^53.0.0",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.63.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
