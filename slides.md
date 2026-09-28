@@ -1,338 +1,446 @@
 ---
 theme: default
 title: From Prompting to Agentic Engineering
-info: A 60-minute Shop 6 engineering workshop
-author: Shop 6 engineering
-duration: 60min
-timer: countdown
-presenter: true
-colorSchema: dark
+colorSchema: light
 fonts:
-  sans: Inter
+  sans: Nunito Sans
+  serif: Rubik
   mono: JetBrains Mono
+transition: fade
+mdc: true
+duration: 60min
 layout: cover
 ---
 
-<div class="eyebrow">SHOP 6 ENGINEERING WORKSHOP · 60 MINUTES</div>
+# From Prompting to Agentic Engineering
 
-# From Prompting to
-# Agentic Engineering
+How we ship with agents at Shop 6 — and how it can speed up your tasks
 
-<div class="subtitle">A Shop 6 task, two workflows, evidence-based comparison</div>
+<div class="mt-8 flex gap-3 text-lg">
+  <span class="rounded-full bg-slate-200 px-5 py-2">Laptop optional</span>
+  <span class="rounded-full border border-slate-400 px-5 py-2">Bring a real task</span>
+</div>
 
-<div class="cover-rule"></div>
-<div class="cover-meta"><span class="pill cyan">Prompt-driven</span><span>→</span><span class="pill violet">Agentic</span><span class="muted">same engineering accountability</span></div>
+<div class="mt-8 text-sm opacity-70">Shop 6 · Tue 29 Sept · CodeLeap office</div>
 
 <!--
-Duration: 2 minutes · cumulative target 02:00
-Talking points: Welcome the developers, QA, and DevOps engineers. This is a practical comparison, not a product pitch. “Legacy” means prompt-driven AI usage, not development without AI.
-Demonstrate / ask: Ask for a show of hands: who has pasted a failing test or log into an AI chat this week? Set the expectation that both workflows use prompts.
-Transition: “We will use one bounded storefront task and inspect the evidence produced by each path.”
+How Shop 6 works today, not a vendor demo. 60 minutes, one focused hands-on comparison, laptop optional. Keep a real task in mind for the end.
+-->
+
+---
+layout: center
+---
+
+<div class="text-center text-xl opacity-70">Not 'AI or no AI?'</div>
+
+# Who owns the context — and the feedback loop?
+
+<div class="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-8">
+  <div class="aspect-square max-w-[320px] justify-self-center rounded-full border-2 border-slate-300 bg-slate-100 p-8 text-center flex flex-col items-center justify-center">
+    <div class="text-3xl font-bold">Context</div>
+    <div class="mt-3 text-lg">ticket, repos, wiki, rules, history</div>
+  </div>
+  <div class="aspect-square max-w-[320px] justify-self-center rounded-full border-2 border-slate-300 bg-slate-100 p-8 text-center flex flex-col items-center justify-center">
+    <div class="text-3xl font-bold">Feedback loop</div>
+    <div class="mt-3 text-lg">who checks the result, who decides next</div>
+  </div>
+</div>
+
+<!--
+Everyone already uses AI somewhere. The question is who holds the context and who closes the loop. In prompting you do both; in agentic engineering you hand parts over, on purpose, with boundaries.
+-->
+
+---
+
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 p-14 text-[#1E2530]">
+  <div class="mb-8 inline-flex rounded-full bg-slate-200 px-5 py-2 text-lg font-semibold">QUICK PULSE · 2 MINUTES</div>
+  <h1 class="text-center text-5xl font-bold">What do you think AI can handle in our work today?</h1>
+  <div class="mt-10 max-w-5xl text-center text-3xl">Which tasks would you trust it with — and where would you still step in?</div>
+</div>
+
+<!--
+Take a quick show of hands, then invite two short answers: which tasks would people delegate today, and where would they still step in? Keep it open and non-judgmental. Return to the question after the same-task comparison.
+-->
+
+---
+
+<div class="mx-auto w-full max-w-full text-center">
+
+# Shop 6 today: an agentic pipeline
+
+<p class="text-2xl">One ticket. Several repos. Agents do the legwork, people decide.</p>
+
+```mermaid
+flowchart LR
+  A[Refinement skill<br/>wiki · docs · repo evidence] --> R{{team reviews}}
+  R --> B[create-implementation-issue<br/>context · approach · local draft]
+  B --> S{{you publish + assign}}
+  S --> C[Cloud agent<br/>Spec Kit · implements → PR]
+  C --> D[/review workflow<br/>verdict + findings/]
+  D --> M{{you merge}}
+  M --> E[Docs-sync workflow<br/>out-of-sync docs → PR]
+  classDef person fill:#D9772B,stroke:#D9772B,color:#ffffff
+  classDef work fill:#2F6DB5,stroke:#2F6DB5,color:#ffffff
+  class A,B,C,D,E work
+  class R,S,M person
+```
+
+<!--
+A skill refines the ticket using cross-repo knowledge (wiki, docs); the team reviews it. create-implementation-issue gathers context, finds the approach and saves a local issue draft. A person publishes the GitHub issue and assigns it to the cloud agent. On the PR, /review gives a verdict — approve or reject, with findings by severity and suggestions. A person merges. After merge, a workflow finds out-of-sync docs and opens a PR. Agents run most steps; people own the gates.
+-->
+
+</div>
+
+---
+
+# Both start with a prompt. The loop is different.
+
+<div class="mt-7 grid grid-cols-1 gap-5">
+  <div class="rounded-2xl border border-slate-300 p-5">
+    <div class="mb-3 text-xl font-bold">Prompt-driven</div>
+    <div class="flex items-center justify-between gap-2 whitespace-nowrap text-base">
+      <span class="rounded-lg bg-[#D9772B] px-3 py-2 text-white">You</span><span>→</span><span>Prompt</span><span>→</span><span>Answer</span><span>→</span><span class="rounded-lg bg-[#D9772B] px-3 py-2 text-white">You</span><span>→</span><span>Prompt → Answer →</span><span class="rounded-lg bg-[#D9772B] px-3 py-2 text-white">You …</span>
+    </div>
+  </div>
+  <div class="rounded-2xl border border-slate-300 p-5">
+    <div class="mb-3 text-xl font-bold">Agentic</div>
+    <div class="flex items-center justify-between gap-2 whitespace-nowrap text-base">
+      <span class="rounded-lg bg-[#D9772B] px-3 py-2 text-white">You</span><span>→</span><span>Brief + boundaries</span><span>→</span><span class="rounded-xl bg-[#2F6DB5] px-4 py-3 text-center text-white">Agent: gather · draft · check</span><span>→</span><span>Evidence</span><span>→</span><span class="rounded-lg bg-[#D9772B] px-3 py-2 text-white">You decide</span>
+    </div>
+  </div>
+</div>
+
+<!--
+Prompt-driven, you're the glue between every step. Agentic, you set the workflow and boundaries once; the agent loops and returns evidence. You move from doing steps to deciding at gates.
 -->
 
 ---
 layout: section
 ---
 
-<div class="section-kicker">00 → 05 · INTRODUCTION AND TASK</div>
-
-# The question is not
-# “AI or no AI?”
-
-<div class="section-line"></div>
-<p class="section-lede">Who owns context, tool execution, and the feedback loop?</p>
-
-<!--
-Duration: 3 minutes · cumulative target 05:00
-Talking points: The same model and IDE can support either workflow. The useful distinction is the operating model: who gathers context, runs tools, reacts to failures, and decides when the result is acceptable.
-Demonstrate / ask: Read the agenda aloud and name the live-demo boundaries. Ask participants to listen for human checkpoints, not for speed claims.
-Transition: “Here is the shared scenario. Treat it as a training bug, not a claim about the real repository.”
--->
-
----
-layout: default
----
-
-<div class="eyebrow">SHARED TRAINING SCENARIO · ILLUSTRATIVE</div>
-
-# Page 5. New category. Empty result.
-
-<div class="scenario-grid">
-  <div class="browser-card">
-    <div class="browser-bar"><span></span><span></span><span></span><code>/shop?category=boots&amp;page=5&amp;sort=price-asc</code></div>
-    <div class="browser-body"><div class="product-ghost"></div><div class="empty-state">No products found</div><div class="page-chip">page 5 / 2</div></div>
-  </div>
-<div class="acceptance-card">
-    <div class="card-label cyan-text">ACCEPTANCE CRITERIA</div>
-    <ol>
-      <li>Category change → <code>page=1</code>.</li>
-      <li>Search + sort stay unchanged.</li>
-      <li>Back/forward restores URL state.</li>
-      <li>Regression fails before, passes after.</li>
-    </ol>
-    <div class="illustrative">Illustrative code and outcomes only — verify against the actual checkout.</div>
-  </div>
+<div class="absolute inset-0 grid place-content-center bg-[#1E2530] px-20 text-center text-white">
+  <h1 class="text-6xl font-bold">Before · Prompt-driven</h1>
+  <p class="mt-6 text-3xl">Where most of us started. You drive every step.</p>
 </div>
 
 <!--
-Duration: 2 minutes · cumulative target 07:00
-Talking points: State the exact proposed training bug. It is deliberately small enough for a bounded delegation and rich enough to exercise URL state, tests, and review.
-Demonstrate / ask: Point to the “page 5 / 2” mismatch. Ask: which acceptance criterion is easiest to accidentally break while fixing the first one?
-Transition: “Before the demos, make the operating-model difference explicit.”
+Not Shop 6 today — the baseline we compare against.
 -->
 
 ---
 
-<div class="eyebrow">A WORKING DISTINCTION</div>
+# Assemble the evidence by hand.
 
-# Both start with a prompt.
-# The loop is different.
-
-<div class="two-up">
-  <div class="workflow-card prompt-card">
-    <div class="workflow-name"><span class="dot cyan-dot"></span>Prompt-driven</div>
-    <div class="flow-row"><b>Human</b><span>→</span><b>AI</b><span>→</span><b>Human</b></div>
-    <p>Human gathers context, chooses each next action, applies changes, and feeds back results.</p>
+<div class="mt-8 grid grid-cols-[1.2fr_auto_1fr_auto_1fr] items-center gap-4">
+  <div class="space-y-3">
+    <div class="rounded-xl border border-slate-300 p-4 text-center">Jira ticket</div>
+    <div class="rounded-xl border border-slate-300 p-4 text-center">repo A</div>
+    <div class="rounded-xl border border-slate-300 p-4 text-center">repo B</div>
+    <div class="rounded-xl border border-slate-300 p-4 text-center">wiki/docs</div>
+    <div class="rounded-xl border border-slate-300 p-4 text-center">Slack thread</div>
   </div>
-  <div class="workflow-card agent-card">
-    <div class="workflow-name"><span class="dot violet-dot"></span>Agentic</div>
-    <div class="flow-row"><b>Human</b><span>→</span><b>Agent</b><span>↺</span><b>Human</b></div>
-    <p>Human delegates a bounded outcome; the agent gathers, edits, runs checks, and iterates within guardrails.</p>
-  </div>
+  <div class="space-y-5 text-3xl text-slate-500"><div>→</div><div>→</div><div>→</div><div>→</div><div>→</div></div>
+  <div class="grid h-44 w-44 place-content-center rounded-full bg-[#D9772B] text-center text-4xl font-bold text-white">You</div>
+  <div class="text-4xl text-slate-500">→</div>
+  <div class="rounded-xl border-2 border-[#D9772B] p-5 text-center text-2xl"><div class="mb-2 text-base text-[#D9772B]">you</div>Draft issue</div>
 </div>
-<div class="callout">Same tool can do either. Permission scope and review discipline matter more than the label.</div>
 
 <!--
-Duration: 3 minutes · cumulative target 10:00
-Talking points: Avoid rigid product categories. A chat window can be agentic if it has tool access and an iteration loop; an agent can be used prompt-by-prompt. The difference is context and execution ownership.
-Demonstrate / ask: Have the audience classify a quick example: “Paste one stack trace, ask for three hypotheses, then stop.” Prompt-driven. “Inspect repo, run the focused test, edit, rerun, report.” Agentic.
-Transition: “Now we will run the first path with deliberate human orchestration.”
+Tabs, copy, paste. You're the integration layer; the AI helps at each step but you carry everything between steps.
+-->
+
+---
+
+# You own every handoff — one issue at a time.
+
+<div class="mt-7 grid grid-cols-[repeat(5,minmax(0,1fr))_1.1fr] items-center gap-3 text-center">
+  <div class="rounded-xl border border-slate-300 p-3"><span class="rounded-full bg-[#D9772B] px-3 py-1 text-sm text-white">you</span><div class="mt-3">Read draft</div></div>
+  <div class="rounded-xl border border-slate-300 p-3"><span class="rounded-full bg-[#D9772B] px-3 py-1 text-sm text-white">you</span><div class="mt-3">Publish issue</div></div>
+  <div class="rounded-xl border border-slate-300 p-3"><span class="rounded-full bg-[#D9772B] px-3 py-1 text-sm text-white">you</span><div class="mt-3">Implement</div></div>
+  <div class="rounded-xl border border-slate-300 p-3"><span class="rounded-full bg-[#D9772B] px-3 py-1 text-sm text-white">you</span><div class="mt-3">Review</div></div>
+  <div class="rounded-xl border border-slate-300 p-3"><span class="rounded-full bg-[#D9772B] px-3 py-1 text-sm text-white">you</span><div class="mt-3">Update docs</div></div>
+  <div class="space-y-2 text-left text-sm text-slate-400"><div class="rounded-lg bg-slate-100 p-2">Issue · waiting</div><div class="rounded-lg bg-slate-100 p-2">Issue · waiting</div><div class="rounded-lg bg-slate-100 p-2">Issue · waiting</div></div>
+</div>
+
+<!--
+It works, it's serial, your attention is the queue. Docs are the step that gets skipped when you're tired.
 -->
 
 ---
 layout: section
 ---
 
-<div class="section-kicker cyan-text">05 → 20 · LIVE DEMO A</div>
-
-# Prompt-driven workflow
-
-<div class="demo-banner cyan-bg"><span class="live-dot"></span> LIVE DEMO · switch between this deck, IDE, browser, terminal</div>
-<div class="demo-steps"><span>context</span><i>→</i><span>diagnose</span><i>→</i><span>apply</span><i>→</i><span>test</span><i>→</i><span>review</span></div>
-
-<!--
-Duration: 3 minutes · cumulative target 13:00
-Preparation: Open the illustrative task in the IDE, a terminal, the browser, and the AI chat. If the tools or network are unavailable, use the static fallback in docs/demo-prep.md.
-Talking points: The developer remains the conductor. This is a valid workflow: deliberate, inspectable, and useful for learning an unfamiliar code path.
-Demonstrate: Switch to the IDE on a second display or side-by-side window; keep this presenter window visible on the laptop display. Do not imply that a hidden browser tab guarantees reminders.
-Transition: “The first cost is context transfer.”
--->
-
----
-
-<div class="eyebrow cyan-text">DEMO A · 1 / 3 · FIND + DIAGNOSE</div>
-
-# Give the model a useful slice.
-
-<div class="prompt-box"><div class="prompt-label">ONE STEP AT A TIME</div><pre>Find the state owner for category, page, search, and sort.
-Explain the likely cause and smallest fix. Do not edit files.
-Do not invent repository facts.</pre></div>
-<div class="flow-strip"><span>locate</span><i>→</i><span>select context</span><i>→</i><span>diagnose</span><i>→</i><span>challenge</span></div>
-<div class="side-note">The human decides what context moves forward.</div>
-
-<!--
-Duration: 5 minutes · cumulative target 18:00
-Preparation: Use an illustrative snippet or the real checkout only if the presenter has verified it. Label any simulated output.
-Exact prompts: Copy the two prompts shown on the slide. Add the selected component and URL-state hook as context; never paste secrets.
-Expected observations: The response should identify state ownership and name risks to URL/back-forward behavior. A confident answer is still a hypothesis.
-Demonstrate: In the IDE, show the file selection; in chat, ask for diagnosis only; switch to terminal briefly to show baseline test intent.
-Fallback: Read the prompt and show the prepared “likely cause” card in docs/demo-prep.md; say “simulated output.”
-Transition: “The human reviews the suggestion before applying anything.”
--->
-
----
-
-<div class="eyebrow cyan-text">DEMO A · 2 / 3 · APPLY + FEEDBACK</div>
-
-# Keep the loop deliberate.
-
-<div class="timeline">
-  <div><b>03</b><span>Review</span><small>Does it preserve search and sort?</small></div>
-  <div><b>04</b><span>Apply</span><small>Human accepts the smallest change.</small></div>
-  <div><b>05</b><span>Test</span><small>Capture exact failure output.</small></div>
-  <div><b>06</b><span>Feed back</span><small>Ask for a correction, not a guess.</small></div>
+<div class="absolute inset-0 grid place-content-center bg-[#1E2530] px-20 text-center text-white">
+  <h1 class="text-6xl font-bold">Now · Shop 6 agentic pipeline</h1>
+  <p class="mt-6 text-3xl">You set the workflow and the boundaries. Agents do the legwork.</p>
 </div>
-<div class="terminal-card"><span class="terminal-prompt">$</span> pnpm test --filter pagination-regression<br><span class="simulated">SIMULATED OUTPUT: expected page=1, received page=5</span></div>
 
 <!--
-Duration: 5 minutes · cumulative target 23:00
-Preparation: Have a prepared failing test command or a transcript. This slide intentionally shows a simulated output; do not claim it came from Shop 6.
-Exact prompt after failure: “The focused test reports expected page=1, received page=5. Re-check the state transition and propose the smallest correction. Preserve query and sort params. Do not edit yet.”
-Expected observations: The loop is interrupted by the human at every meaningful step. That is the point, not a defect.
-Fallback: Use the terminal card and walk the timeline without running a live app.
-Transition: “The final step is still a human-owned review and PR handoff.”
 -->
 
 ---
 
-<div class="eyebrow cyan-text">DEMO A · 3 / 3 · TEST + REVIEW</div>
+# Refine the ticket with what the whole fleet knows.
 
-# A reviewed patch is the outcome.
-
-<div class="checklist-grid">
-  <div class="checklist"><span>07</span><p>Ask for a regression test</p><small>“Write a focused test that fails on the original behavior and proves all four criteria.”</small></div>
-  <div class="checklist"><span>08</span><p>Review the final diff</p><small>Check URL preservation, test intent, unrelated changes, and uncertainty.</small></div>
-  <div class="checklist"><span>09</span><p>Prepare the PR</p><small>Summarize evidence, known limits, and what remains for CI.</small></div>
+<div class="mt-12 flex items-center justify-between gap-3 text-center">
+  <div class="space-y-3"><div class="rounded-lg border p-3">Jira ticket</div><div class="rounded-lg border p-3">Wiki</div><div class="rounded-lg border p-3">Docs</div><div class="rounded-lg border p-3">Repo evidence</div></div>
+  <div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-7 text-xl text-white"><div class="mb-2 text-sm">agent</div>Refinement skill</div>
+  <div class="text-3xl">→</div>
+  <div class="rounded-xl border-2 border-slate-300 p-5">Refined ticket</div>
+  <div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#D9772B] p-7 text-xl text-white"><div class="mb-2 text-sm">you</div>Team review</div>
 </div>
-<div class="bottom-line">Benefits: low setup overhead · deliberate control · learning · exploratory discussion</div>
-<div class="warning-line">Costs: repeated context transfer · manual coordination · interruptions · suggestions can remain unverified</div>
 
 <!--
-Duration: 7 minutes · cumulative target 30:00
-Exact prompts: “Write the regression test first. Show the test and explain why it would fail before the fix.” Then: “Review this final diff against each acceptance criterion. Call out anything unverified.”
-Expected observations: A good prompt-driven session can be careful and successful. The coordination cost is visible in the number of handoffs.
-Demonstrate: Switch IDE → terminal → browser → this slide. Pause to ask QA what evidence they would require before approving.
-Fallback: Use the static diff-review checklist in docs/demo-prep.md.
-Transition: “Now keep the same task, but delegate the bounded loop.”
--->
-
----
-layout: section
----
-
-<div class="section-kicker violet-text">20 → 35 · LIVE DEMO B</div>
-
-# Agentic workflow
-
-<div class="demo-banner violet-bg"><span class="live-dot"></span> LIVE DEMO · delegate the loop, retain the checkpoints</div>
-<div class="agent-brief-strip">bounded outcome <span>·</span> repository-aware <span>·</span> test-backed <span>·</span> no merge / no deploy</div>
-
-<!--
-Duration: 3 minutes · cumulative target 33:00
-Preparation: Open the same illustrative task, the repository instructions, and a clean working state. Ensure the agent has only the permissions needed for the demo. No merging, deployment, or secrets.
-Talking points: Delegation changes who manages context and iteration; it does not transfer accountability.
-Demonstrate: Keep the presenter window on the laptop/second display, and use the presenter-only timer. The audience sees only the slide window.
-Fallback: Use the static walkthrough in docs/demo-prep.md.
-Transition: “The brief must be complete enough to constrain the work.”
+(Live demo.) The skill checks the ticket against wiki, docs and repo evidence and asks the smallest set of questions. Its output is a proposal; the team reviews it before anything is written back.
 -->
 
 ---
 
-<div class="eyebrow violet-text">DEMO B · THE TASK BRIEF</div>
+# Gather the context. Find the approach. Hand it over.
 
-# Delegate an outcome, not a vibe.
-
-<div class="brief-card">
-  <div class="brief-title">SHOP 6 TRAINING BUG · bounded task</div>
-  <p>Fix the illustrative pagination bug without losing URL state.</p>
-  <div class="brief-columns"><div><b>Prove</b><ul><li>page resets</li><li>query + sort survive</li><li>history works</li><li>test fails then passes</li></ul></div><div><b>Protect</b><ul><li>bounded scope</li><li>existing dependencies</li><li>no merge / deploy</li><li>honest uncertainty</li></ul></div></div>
+<div class="mt-16 flex items-center justify-between gap-3 text-center">
+  <div class="rounded-xl border p-4">Refined ticket</div><div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">agent</div><div class="font-bold">create-implementation-issue</div><div class="mt-2 text-sm">context · approach · local draft</div></div><div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#D9772B] p-5 text-white"><div class="mb-2 text-sm">you</div>Publish issue<br/>+ assign</div><div class="text-3xl">→</div>
+<div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">agent</div>Cloud agent · Spec Kit</div><div class="text-3xl">→</div><div class="rounded-xl border p-5">PR</div>
 </div>
-<div class="checkpoint-row"><span>1 · approve plan</span><span>2 · inspect diff</span><span>3 · verify evidence</span><span>4 · accept or rework</span></div>
 
 <!--
-Duration: 7 minutes · cumulative target 40:00
-Preparation: The complete copyable prompt is in presenter notes below and in docs/demo-prep.md. Paste it only into the approved agent session.
-Copyable prompt:
-“You are working on a bounded, illustrative Shop 6 training task. First inspect repository instructions and the relevant code. Explain the likely cause and propose a short plan before editing. Wait for human approval of the plan. After approval, implement the smallest change that resets pagination to page 1 when category changes while preserving search text, sorting, and URL-driven back/forward state. Add meaningful regression tests. Demonstrate failure against the original implementation and success afterward. Inspect the final diff and report exact commands, outputs, uncertainty, and any acceptance criterion not proven. Do not refactor unrelated code, add dependencies, merge, or deploy. Do not invent repository paths or results.”
-Expected observations: The agent gathers context, pauses for approval, edits, runs checks, iterates, and reports evidence. Written claims are not executed evidence.
-Fallback: Read the brief and use the prepared transcript; mark it simulated.
-Transition: “Let’s make the human checkpoints visible.”
+(Live demo.) The skill does the cross-repo digging we used to do by hand and saves a local issue draft with evidence and an approach. I publish that draft as a GitHub issue and assign it to the cloud agent. For implementation, Shop 6 uses Spec Kit to give the agent a structured plan and artifacts — that's where work leaves my machine, so it waits for me.
 -->
 
 ---
 
-<div class="eyebrow violet-text">DEMO B · HUMAN CHECKPOINTS</div>
+# /review — a verdict, not a vibe.
 
-# The agent owns the loop.
-# The human owns the boundary.
-
-<div class="checkpoint-list">
-  <div><span>01</span><b>Approve</b><p>Small, testable, repository-consistent?</p></div>
-  <div><span>02</span><b>Challenge</b><p>Which assumptions were actually inspected?</p></div>
-  <div><span>03</span><b>Review</b><p>Does the test cover the acceptance criteria?</p></div>
-  <div><span>04</span><b>Decide</b><p>Separate evidence from written claims.</p></div>
+<div class="mt-16 flex items-center justify-between gap-5 text-center">
+  <div class="rounded-xl border p-6">PR</div><div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-7 text-xl text-white"><div class="mb-2 text-sm">agent</div>/review</div><div class="text-3xl">→</div>
+  <div class="rounded-2xl border-2 border-[#2F6DB5] p-6"><div class="mb-2 text-sm text-[#2F6DB5]">agent</div><div class="text-xl font-bold">Approve / Reject</div><div class="mt-2">Findings by severity · Suggestions</div></div><div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#D9772B] p-7 text-xl text-white"><div class="mb-2 text-sm">you</div>You merge</div>
 </div>
-<div class="evidence-band"><b>Evidence ladder</b><span>agent says</span><i>→</i><span>command shown</span><i>→</i><span>output observed</span><i>→</i><span>reviewer accepts</span></div>
 
 <!--
-Duration: 5 minutes · cumulative target 45:00
-Talking points: An agent can reduce coordination, but the review responsibility remains. The strongest signal is reproducible output tied to exact commands and a final diff.
-Demonstrate / ask: Ask QA: what would you reject even if the agent says “all tests pass”? Ask DevOps: what permission boundary would you set?
-Fallback: Use the evidence ladder as the static walkthrough.
-Transition: “Now compare the two workflows against the same dimensions.”
+(Live demo.) /review returns a verdict with findings ranked by severity and concrete suggestions. Approve means ready for a human, never auto-merge. A person always merges.
 -->
 
 ---
 
-<div class="eyebrow">35 → 50 · COMPARE RESULTS AND TRADE-OFFS</div>
+# After merge, the docs catch up.
+
+<div class="mt-16 flex items-center justify-between gap-3 text-center">
+  <div class="rounded-xl border p-5">Merged PR</div><div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">workflow</div>Docs-sync workflow<br/><span class="text-sm">runs on its own</span></div><div class="text-3xl">→</div>
+  <div class="rounded-xl border p-4">Out-of-sync docs found</div><div class="text-3xl">→</div><div class="rounded-xl border p-5">Docs PR</div><div class="text-3xl">→</div>
+  <div class="rounded-2xl bg-[#D9772B] p-5 text-white"><div class="mb-2 text-sm">you</div>You review</div>
+</div>
+
+<!--
+Nobody starts this one. It runs after every merge, finds docs that no longer match the code, and opens a PR. The step people always skipped is no longer optional.
+-->
+
+---
+
+# Better context, fewer tokens.
+
+<div class="mt-10 grid grid-cols-3 gap-6">
+  <div class="rounded-2xl border border-slate-300 p-6"><div class="text-2xl font-bold">CodeGraph</div><p class="mt-4">Callers · callees · impact radius</p></div>
+  <div class="rounded-2xl border border-slate-300 p-6"><div class="text-2xl font-bold">rtk</div><p class="mt-4">Less command noise · fewer tokens</p></div>
+  <div class="rounded-2xl border border-slate-300 p-6"><div class="text-2xl font-bold">Wiki &amp; docs</div><p class="mt-4">Cross-repo facts for refinement</p></div>
+</div>
+<div class="mt-7 text-center text-sm">Also: [other tools we use]</div>
+<div class="mt-2 text-center text-xs">Sample: CodeGraph 181–205 ms (3 warm runs) · RTK <code>git log --stat -n 10</code>: 616 tokens saved (50.2% estimate)</div>
+<div class="mt-2 text-center text-sm"><a class="text-slate-800 underline" href="/downloads/shop6-agentic-skills.zip" download>Download Shop 6 issue + Spec Kit skills</a></div>
+
+<!--
+Agents fail on bad context more than bad reasoning; these tools feed them the right context. CodeGraph answers "what calls this, what breaks if I change it" without reading half the repo. Three warm CodeGraph service runs of `JtlSearchAdapter searchProducts callers` took 181–205 ms. The local Shop 6 checkout has no CodeGraph index; the measured query used the existing shared graph. RTK reported 616 estimated tokens saved (50.2%) for `rtk git log --stat -n 10`; that is one command's estimate, not a general saving rate. rtk keeps command output short, so attention goes where it matters and it costs fewer tokens. [our measured saving, if any]
+-->
+
+---
+
+<div class="mb-5 inline-flex rounded-full bg-slate-200 px-4 py-2 text-sm font-semibold tracking-wide">FUTURE PLAN · GITHUB AGENTIC WORKFLOWS</div>
+
+# Start the workflow from the ticket.
+
+<div class="mt-8 grid grid-cols-[1.2fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-2 text-center">
+  <div class="space-y-3">
+    <div class="rounded-xl border-2 border-slate-300 p-4">Jira assigned to agent</div>
+    <div class="text-xs font-semibold tracking-widest text-slate-500">OR</div>
+    <div class="rounded-xl border-2 border-slate-300 p-4">GitHub issue created</div>
+  </div>
+  <div class="text-3xl text-slate-500">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">workflow</div>Refine ticket</div>
+  <div class="text-3xl text-slate-500">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">agent</div>Spec Kit</div>
+  <div class="text-3xl text-slate-500">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">agent</div>Implement</div>
+  <div class="text-3xl text-slate-500">→</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">workflow</div>Code review</div>
+  <div class="text-3xl text-slate-500">→</div>
+  <div class="rounded-2xl bg-[#D9772B] p-5 text-white"><div class="mb-2 text-sm">you</div>Merge</div>
+</div>
+<div class="mt-5 grid grid-cols-2 gap-4 text-center text-sm">
+  <div class="rounded-xl border border-slate-300 p-3"><b>Spec-driven is our next step:</b> a better harness helps the agent deliver better results.</div>
+  <div class="rounded-xl border border-slate-300 p-3"><b>Silly hypothetical:</b> “Make checkout faster.” <b>Agent:</b> removes checkout. Fastest checkout. 😅</div>
+</div>
+
+<!--
+Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agent or a newly created GitHub issue can trigger refinement, then Spec Kit-guided implementation and code review. A person still owns the merge. We believe spec-driven work is the next step: the better the harness, the better the results. Clear instructions help even a capable agent; ambiguity can confuse a smart one too. The checkout line is an intentionally silly hypothetical, not a Shop 6 incident.
+-->
+
+---
 
 # Same task. Different control surface.
 
-<table class="compare-table"><thead><tr><th></th><th class="cyan-text">Prompt-driven</th><th class="violet-text">Agentic</th></tr></thead><tbody>
-<tr><td>Workflow ownership</td><td>Human orchestrates each step</td><td>Agent manages bounded loop</td></tr>
-<tr><td>Context gathering</td><td>Manually selected and transferred</td><td>Agent inspects within scope</td></tr>
-<tr><td>Interventions</td><td>Frequent, explicit handoffs</td><td>Fewer, deliberate checkpoints</td></tr>
-<tr><td>Feedback loop</td><td>Human runs tools and feeds results</td><td>Agent runs checks and iterates</td></tr>
-<tr><td>Review effort</td><td>Distributed across steps</td><td>Concentrated at plan + diff + evidence</td></tr>
-<tr><td>Blast radius</td><td>Usually narrower by default</td><td>Depends on granted permissions</td></tr>
-</tbody></table>
-<div class="footnote">Neither workflow guarantees correctness. Correctness comes from scope, evidence, and review.</div>
+<table class="mt-5 w-full border-collapse text-center text-xs">
+  <thead><tr><th></th><th>Refine</th><th>Issue + context</th><th>Publish + assign</th><th>Implement</th><th>Review</th><th>Docs</th></tr></thead>
+  <tbody>
+    <tr><th>Before</th><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span> / AI chat</td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span> (if time)</td></tr>
+    <tr><th>Shop 6 now</th><td><span class="rounded bg-[#2F6DB5] px-1 text-white">agent</span> → <span class="rounded bg-[#D9772B] px-1 text-white">team reviews</span></td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">agent</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">cloud agent</span></td><td>/review → <span class="rounded bg-[#D9772B] px-1 text-white">you</span> merge</td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">workflow</span> → <span class="rounded bg-[#D9772B] px-1 text-white">you</span> review PR</td></tr>
+  </tbody>
+</table>
 
 <!--
-Duration: 5 minutes · cumulative target 50:00
-Talking points: Walk row by row. Cost includes elapsed time, usage cost, and human attention; do not assume fewer prompts means lower total delivery effort.
-Demonstrate / ask: Ask the room which row changes most for their team. Capture one answer verbally, not as an invented benchmark.
-Transition: “A small review trap shows why acceptance criteria must remain visible.”
+Same steps. Before, you did almost all of them. Now agents do the legwork and people sit at the gates. Accountability didn't move — your name is still on the merge.
 -->
 
 ---
 
-<div class="eyebrow">REVIEW TRAP · ACCEPTANCE CRITERIA IN ACTION</div>
+<div class="mx-auto max-w-6xl">
 
-# “It resets pagination.”
-# …and silently drops sorting.
+# Shop 6 agent activity by repository
 
-<div class="trap-grid"><div class="diff-card bad"><div class="diff-title">PATCH CLAIM</div><pre><span class="minus">- setState({ category, page: 5, sort })</span>
-<span class="plus">+ setState({ category, page: 1 })</span></pre><div class="trap-label">page reset: ✓ · sort preserved: ✕</div></div><div class="review-card"><div class="diff-title">REVIEW QUESTION</div><p>Does the URL after category change still contain:</p><div class="url-check"><code>q=boots</code><code>sort=price-asc</code><code>page=1</code></div><p class="muted">Run the same checklist in both workflows. A plausible patch is not acceptance evidence.</p></div></div>
-<div class="cue">Pause. Ask: which test would catch this?</div>
+<table class="mt-5 w-full border-collapse text-center text-sm">
+  <thead><tr><th class="p-2 text-left">Repository</th><th>Tasks</th><th>PR-linked</th><th>Sessions</th><th>Completed</th><th>Failed</th><th>Cancelled</th></tr></thead>
+  <tbody>
+    <tr><th class="p-2 text-left">Shop standards</th><td>21</td><td>21</td><td>47</td><td>20</td><td>0</td><td>1</td></tr>
+    <tr><th class="p-2 text-left">Contracts</th><td>121</td><td>121</td><td>171</td><td>114</td><td>4</td><td>3</td></tr>
+    <tr><th class="p-2 text-left">Admin</th><td>141</td><td>141</td><td>235</td><td>131</td><td>4</td><td>6</td></tr>
+    <tr><th class="p-2 text-left">Storefront</th><td>156</td><td>156</td><td>251</td><td>144</td><td>2</td><td>10</td></tr>
+    <tr><th class="p-2 text-left">ERP connector</th><td>157</td><td>151</td><td>181</td><td>152</td><td>0</td><td>5</td></tr>
+    <tr><th class="p-2 text-left">Components</th><td>92</td><td>92</td><td>111</td><td>86</td><td>1</td><td>5</td></tr>
+    <tr><th class="p-2 text-left">Search</th><td>108</td><td>108</td><td>161</td><td>101</td><td>5</td><td>2</td></tr>
+    <tr><th class="p-2 text-left">Infrastructure</th><td>97</td><td>96</td><td>206</td><td>93</td><td>2</td><td>2</td></tr>
+    <tr><th class="p-2 text-left">Local</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><th class="p-2 text-left">Frontend proxy</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr class="border-t-2 font-bold"><th class="p-2 text-left">Total</th><td>893</td><td>886</td><td>1,363</td><td>841</td><td>18</td><td>34</td></tr>
+  </tbody>
+</table>
 
 <!--
-Duration: 5 minutes · cumulative target 55:00
-Talking points: This is a realistic failure mode: the primary bug is fixed while another acceptance criterion is regressed. Agents and humans can both miss it.
-Demonstrate / ask: Have participants name a test assertion for `sort` and one for back/forward. Then ask whether the final diff or the test output proves each.
-Fallback: Use the code card as a static review exercise.
-Transition: “We need a scorecard before we claim an advantage.”
+These are the supplied Shop 6 repository totals: tasks, tasks linked to PRs, agent sessions, and task outcomes. Keep the table factual; it describes activity and outcomes, not a controlled comparison with the prompt-driven run.
+-->
+
+</div>
+
+---
+
+<div class="mx-auto max-w-5xl">
+
+# Agent session elapsed time
+
+<p class="mt-2 text-center text-sm">76 sessions with recorded start and end times</p>
+
+<table class="mt-7 w-full border-collapse text-center text-lg">
+  <thead><tr><th class="p-3 text-left">Repository</th><th>Sessions</th><th>Mean</th><th>Median</th><th>90th percentile</th></tr></thead>
+  <tbody>
+    <tr><th class="p-3 text-left">Shop standards</th><td>29</td><td>6.5 min</td><td>4.9 min</td><td>12.0 min</td></tr>
+    <tr><th class="p-3 text-left">Contracts</th><td>13</td><td>7.6 min</td><td>8.3 min</td><td>10.9 min</td></tr>
+    <tr><th class="p-3 text-left">Admin</th><td>20</td><td>25.8 min</td><td>20.0 min</td><td>56.7 min</td></tr>
+    <tr><th class="p-3 text-left">Storefront</th><td>14</td><td>8.5 min</td><td>8.4 min</td><td>12.5 min</td></tr>
+    <tr class="border-t-2 font-bold"><th class="p-3 text-left">Sample total</th><td>76</td><td>12.1 min</td><td>8.3 min</td><td>20.5 min</td></tr>
+  </tbody>
+</table>
+
+<!--
+These elapsed-time figures cover only sessions with both a start and end time in the supplied sample. They are session elapsed times, not hands-on time or a matched before/after task benchmark.
+-->
+
+</div>
+
+---
+
+# Don't invent the benchmark.
+
+<table class="mt-8 w-full border-collapse text-xl">
+  <thead><tr><th></th><th>Before</th><th>Shop 6 now</th></tr></thead>
+  <tbody>
+    <tr><th>Hands-on time</th><td>[__ min]</td><td>[__ min]</td></tr>
+    <tr><th>Wall-clock time</th><td>[__ min]</td><td>[__ min]</td></tr>
+    <tr><th>Rework</th><td>[__ min]</td><td>[__ min]</td></tr>
+    <tr><th>Measured on</th><td>[ticket · date]</td><td>[ticket · date]</td></tr>
+  </tbody>
+</table>
+
+<!--
+One real ticket, both ways, rework included. If a number isn't flattering, say it. The gain is mostly attention freed up, not the agent typing faster.
 -->
 
 ---
 
-<div class="eyebrow">SCORECARD · MEASURE LIVE</div>
+# Pros & trade-offs: discuss what matters in your repo.
 
-# Do not invent the benchmark.
-
-<div class="scorecard"><div class="score-row head"><span>Measure</span><span>Prompt-driven</span><span>Agentic</span></div><div class="score-row"><span>Time to a reviewed patch</span><b>To measure live</b><b>To measure live</b></div><div class="score-row"><span>Manual interventions</span><b>To measure live</b><b>To measure live</b></div><div class="score-row"><span>Test results</span><b>To measure live</b><b>To measure live</b></div><div class="score-row"><span>Missed acceptance criteria</span><b>To measure live</b><b>To measure live</b></div><div class="score-row"><span>Review + rework time</span><b>To measure live</b><b>To measure live</b></div><div class="score-row"><span>Usage cost, if available</span><b>To measure live</b><b>To measure live</b></div></div>
-<p class="center-note">One workshop demo is illustrative, not a benchmark. Evaluate quality and total delivery effort.</p>
+<div class="mt-6 grid grid-cols-2 gap-8">
+  <div class="rounded-2xl border-2 border-slate-300 p-6">
+    <div class="mb-4 text-2xl font-bold">Pros</div>
+    <ul class="space-y-4 text-lg">
+      <li>Shared context across repos goes into the issue draft.</li>
+      <li>After handoff, you can start the next ticket.</li>
+    </ul>
+  </div>
+  <div class="rounded-2xl border-2 border-slate-300 p-6">
+    <div class="mb-4 text-2xl font-bold">Trade-offs</div>
+    <ul class="space-y-3 text-lg">
+      <li>Refinement and issue drafting still start by hand.</li>
+      <li>Docs catch up after merge; main is briefly stale.</li>
+      <li>Activity metrics are not a matched before/after speed benchmark.</li>
+    </ul>
+  </div>
+</div>
 
 <!--
-Duration: 3 minutes · cumulative target 58:00
-Talking points: Keep the scorecard blank. We are designing a measurement habit, not announcing productivity gains. If cost data is unavailable, record that explicitly.
-Demonstrate / ask: Ask participants to choose one measure they can reliably capture in a two-week pilot.
-Transition: “Close with a small, reversible pilot.”
+Discuss: which benefit would matter most in your repo, and which trade-off would you address first? Activity and elapsed-session metrics are available; a matched before/after task benchmark is a separate measurement.
 -->
 
 ---
 
-<div class="eyebrow">50 → 60 · DISCUSSION AND NEXT STEPS</div>
-
-# Two weeks. One small issue each.
-
-<div class="pilot-grid"><div class="pilot-step"><span>01</span><b>Choose</b><p>Take one small Shop 6 issue with clear acceptance criteria.</p></div><div class="pilot-step"><span>02</span><b>Run</b><p>Use one workflow; record checkpoints, tests, rework, and elapsed time.</p></div><div class="pilot-step"><span>03</span><b>Share</b><p>Bring one outcome and one lesson to the team.</p></div></div>
-<div class="responsibility"><b>Engineer</b> frames scope · <b>QA</b> challenges evidence · <b>DevOps</b> constrains blast radius · <b>Everyone</b> owns the decision</div>
-<div class="close-line">Optimize for trustworthy delivery — not generated lines of code.</div>
+<div class="absolute inset-0 flex flex-col bg-[#FBE7D6] p-12 text-[#1E2530]">
+  <div class="mb-7 inline-flex w-fit rounded-full bg-slate-800 px-5 py-2 text-lg font-semibold text-white">TRY · 14 minutes · laptop optional</div>
+  <h1 class="text-4xl font-bold">Run the same task two ways.</h1>
+  <div class="mt-6 grid grid-cols-2 gap-6">
+    <div class="rounded-2xl border-2 border-slate-400 bg-white p-6">
+      <div class="text-xl font-bold">Legacy · prompt loop</div>
+      <div class="mt-3 text-lg">Use a Superpowers skill, such as <code>superpowers:brainstorming</code>. Gather context and build the issue draft step by step.</div>
+    </div>
+    <div class="rounded-2xl border-2 border-slate-400 bg-white p-6">
+      <div class="text-xl font-bold">Agentic · Shop 6 skill</div>
+      <div class="mt-3 text-lg">The agent runs <code>create-implementation-issue</code>, gathers context, and saves a local issue draft.</div>
+    </div>
+  </div>
+  <div class="mt-5 flex items-center justify-between gap-4 text-base">
+    <span>6 minutes each · 2 minutes to compare time, evidence, and rework</span>
+    <a class="rounded-full bg-slate-200 px-4 py-2 font-semibold text-slate-900" href="/downloads/shop6-agentic-skills.zip" download>Download · extract at repo root</a>
+  </div>
+  <div class="mt-3 text-xs">Local draft; a person publishes the GitHub issue. Spec Kit is required for substantial work; cloud-bootstrap can create missing artifacts.</div>
+  <div class="mt-2 text-xs">No laptop? Follow the demo.</div>
+</div>
 
 <!--
-Duration: 2 minutes · cumulative target 60:00
-Talking points: Restate the actionable pilot. Ask each participant to name the issue class they might choose and one measure they will record. Emphasize that agents do not remove engineering accountability.
-Demonstrate / ask: Show the timer’s “wrap up” cue at two minutes and stronger cue at 30 seconds if running live. At expiry, the timer shows overtime and does not auto-advance.
-Transition: Thank the group and leave the deck in presenter mode for questions.
+No pair work. Use the same small task and repo for both runs. Spend six minutes prompting step by step, for example with `superpowers:brainstorming`, then six minutes using `create-implementation-issue`; use the last two minutes to compare elapsed time, context/evidence captured, and rework in the draft. This ends at a local issue draft: the skill does not publish the GitHub issue. For substantial work, Shop 6 uses Spec Kit during implementation; the skill can use existing artifacts or choose cloud-bootstrap to create missing ones. Only behavior-preserving maintenance allowed by repo policy may skip Spec Kit.
+-->
+
+---
+layout: center
+---
+
+# Thank you
+
+## What would you hand over first?
+
+<div class="mt-10 text-lg">Start here: AGENTS.md in any shop repo · Shop 6 onboarding page</div>
+
+<!--
+Take questions. If quiet, ask the closing question.
 -->

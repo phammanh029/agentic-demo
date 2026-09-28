@@ -1,41 +1,100 @@
-# Demo preparation and fallback walkthrough
+# Shop 6 issue-to-delivery demo preparation
 
-This workshop uses a proposed training bug only. It does not claim the bug exists in the real Shop 6 repository. Any code, terminal output, file path, or agent transcript shown without a verified checkout must be labelled **illustrative** or **simulated**.
+The workshop compares prompt-driven and agentic handling of the same Shop 6 workflow:
+
+1. Gather evidence from multiple projects.
+2. Draft a self-contained implementation issue.
+3. Publish the approved draft to GitHub and assign it to Copilot.
+4. Review the resulting code and verification evidence.
+5. Update the affected documentation.
+6. Move to the next issue only after the completion gates pass.
+
+## Verified workflow boundary
+
+The `create-implementation-issue` skill at `.agents/skills/create-implementation-issue/SKILL.md` is a local issue-drafting workflow. It gathers repository evidence, writes an issue under `.tmp/github-issues/`, and then stops. It explicitly does not publish a GitHub issue, implement the change, or mutate a remote system. GitHub publication and Copilot assignment are later workflow steps and must be demonstrated separately.
+
+The skill requires documentation to be treated as an implementation deliverable when affected. It also requires fresh verification and an appropriate independent implementation review before the issue can be reported complete. Keep those checks visible in both demos.
 
 ## Before the workshop
 
-- Confirm Node.js `>=22.12.0` and run `pnpm install`.
-- Run `pnpm dev`, open the audience window at `/`, and open the presenter window at `/presenter`.
-- Put the presenter window on the laptop/second display and the audience window on the shared display. Keep the presenter window visible on a second display while spending time in the IDE; a hidden browser tab is not a guaranteed reminder.
-- Prepare an approved, disposable checkout or use the static fallback. Do not paste credentials, customer data, or private API keys into the demo.
-- Keep a terminal ready for the focused regression command and a browser ready for URL back/forward.
-- Start the presenter-only timer on slide 1. Use Pause/Resume around tool/network interruptions. Use Next section manually; expiry never advances slides.
+- Select one small, approved Shop 6 issue that has relevant context in more than one project.
+- Verify the branch, commit, and worktree state for each project used as evidence. Use read-only sibling project access.
+- Prepare a disposable or explicitly approved GitHub issue target if demonstrating publication and Copilot assignment live. Otherwise use the static fallback and label it simulated.
+- Do not publish against a production backlog, assign a real agent, or expose credentials/customer data without the workshop owner's explicit approval.
+- Prepare the current implementation review skill/process and identify which specs, tests, docs, examples, or operational guidance are in scope for this sample issue.
+- Run the Slidev audience view. The per-slide and 60-minute timers start automatically when the deck opens; revisit a slide to confirm its countdown resumes rather than resetting.
 
-## Prompt-driven fallback
+## Prompt-driven baseline · 5.5 minutes
 
-1. Show the scenario and the four acceptance criteria.
-2. Read Prompt 01 and Prompt 02 from slide 6.
-3. Show a simulated diagnosis: category change updates category but retains page; reset must preserve `q` and `sort`.
-4. Show the simulated baseline failure: `expected page=1, received page=5`.
-5. Read the correction prompt from slide 7.
-6. Show a simulated focused test that fails before the fix and passes after it.
-7. Use the review trap on slide 13 to prove that “page reset” is not enough.
+Keep the engineer visibly responsible for each context transfer and handoff.
 
-## Agentic fallback
+1. Manually inspect the relevant Shop 6 project and sibling projects; show where each issue fact comes from.
+2. Run or narrate the `create-implementation-issue` skill. Show the local draft and check its evidence, acceptance criteria, repository snapshots, and unknowns.
+3. Have the engineer carry the accepted draft to GitHub, publish it, and assign Copilot. If not approved for live use, use a labelled simulated issue.
+4. Show how the engineer monitors the Copilot result, collects fresh verification, and requests an independent code review.
+5. Check that the required documentation is updated and reviewed. Only then choose the next issue and note which context must be gathered again.
 
-Use this complete prompt in the approved agent session:
+Prompts to use one at a time:
 
 ```text
-You are working on a bounded, illustrative Shop 6 training task. First inspect repository instructions and the relevant code. Explain the likely cause and propose a short plan before editing. Wait for human approval of the plan. After approval, implement the smallest change that resets pagination to page 1 when category changes while preserving search text, sorting, and URL-driven back/forward state. Add meaningful regression tests. Demonstrate failure against the original implementation and success afterward. Inspect the final diff and report exact commands, outputs, uncertainty, and any acceptance criterion not proven. Do not refactor unrelated code, add dependencies, merge, or deploy. Do not invent repository paths or results.
+Inspect the relevant Shop 6 project and sibling project context for this request.
+Draft one evidence-backed implementation issue locally. Cite repository paths,
+branches/commits, relevant decisions, validation commands, and unresolved questions.
+Keep scope bounded and make affected documentation explicit. Do not invent evidence,
+publish the issue, assign an agent, or implement the change.
 ```
 
-Fallback transcript: “The agent inspected the relevant state owner, proposed a two-step plan, paused. After approval it added one focused regression test and the smallest state transition. It ran the baseline test against the original behavior, then reran after the change. The presenter now checks the exact output and final diff; written claims alone are not evidence.” Label this transcript simulated.
+```text
+Review this implementation against every issue acceptance criterion. Inspect the
+final diff and fresh verification evidence. Identify any required documentation,
+specification, example, or operational guidance that is missing or stale. Report
+unverified criteria and findings; do not claim completion without the required
+independent review verdict.
+```
 
-## Review prompts
+## Shop 6 agentic pipeline demo · 16.5 minutes
 
-- Does category change set page to `1`?
-- Does search text remain unchanged?
-- Does sorting remain unchanged?
-- Does back/forward restore the URL-driven state?
-- Does the regression fail against the original implementation and pass afterward?
-- Are commands and outputs visible, reproducible, and tied to the final diff?
+Use the same request and project snapshots so the comparison is fair. Let the agent carry context between steps, but pause at the explicit human checkpoints.
+
+The separate hands-on comparison gets 14 minutes: six minutes for the legacy prompt loop, six minutes for `create-implementation-issue`, then two minutes to compare evidence, elapsed time, and rework.
+
+```text
+Work on one bounded Shop 6 issue using the create-implementation-issue workflow.
+First inspect the repository instructions and relevant owning and sibling projects.
+Produce a self-contained, evidence-backed local issue draft with exact paths,
+repository snapshots, acceptance criteria, validation, and affected documentation.
+Save and report the local issue draft, then stop this skill. After human approval,
+use the separate approved GitHub publication and Copilot-assignment workflow. When
+implementation is returned, inspect the diff and
+fresh verification, obtain the required independent code review, ensure affected
+documentation is current, and report residual gaps. Start the next issue only after
+the current issue meets its completion gates. Never invent paths, results, or
+review verdicts; do not merge or deploy.
+```
+
+Show these checkpoints:
+
+- **Issue approval:** cross-project evidence supports the scope and acceptance criteria.
+- **Remote handoff:** a human approves GitHub publication and Copilot assignment.
+- **Implementation review:** final diff and fresh verification satisfy all criteria; required independent review passes.
+- **Documentation:** in-scope docs and artifacts reflect delivered behavior.
+- **Next issue:** carry forward only verified context and explicit follow-ups.
+
+## Static fallback
+
+Use a prepared issue with sections for objective, evidence from each project, confirmed decisions, scope, acceptance criteria, required tests, required documentation, review gate, and incomplete follow-ups. Walk the issue through the handoffs with a clearly marked simulated GitHub issue and Copilot assignment. For the implementation return, show a sample review checklist and the documentation paths identified for the selected issue; do not fabricate test output or an approval verdict.
+
+## Comparison scorecard
+
+Record results live; leave unavailable values blank rather than estimating.
+
+| Measure | Prompt-driven | Agentic |
+|---|---|---|
+| Time to approved issue |  |  |
+| Context coverage across projects |  |  |
+| Manual handoffs / interventions |  |  |
+| Review findings and rework |  |  |
+| Documentation completeness |  |  |
+| Time to start next issue |  |  |
+
+One workshop run is illustrative, not a productivity benchmark. Compare total delivery effort, review quality, evidence coverage, and handoffs.
