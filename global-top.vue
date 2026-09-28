@@ -15,15 +15,14 @@ const sections = [
   { from: 6, to: 8, label: 'BEFORE' },
   { from: 9, to: 15, label: 'SHOP 6' },
   { from: 16, to: 18, label: 'COMPARE' },
-  { from: 19, to: 20, label: 'EVIDENCE' },
-  { from: 21, to: 22, label: 'TRY + CLOSE' },
+  { from: 19, to: 19, label: 'DISCUSS' },
+  { from: 20, to: 21, label: 'TRY + CLOSE' },
 ]
-// Per-slide budgets from the workshop run sheet, in minutes. Slide 22 uses
-// the upper end of its 1–2 minute allocation. The hands-on gets the time
-// freed by removing the boundary worksheet and live vote.
-const slideMinutes = [1, 2, 2, 3, 2, 0.5, 3, 2, 0.5, 3, 4, 3, 3, 3, 2, 2, 2, 2, 2, 3, 14, 1]
+// Per-slide budgets total 60 minutes. The extra two minutes support the
+// second live demo's review and documentation steps.
+const slideMinutes = [1, 2, 2, 3, 2, 0.5, 3, 2, 0.5, 3, 4, 4, 4, 3, 2, 2, 2, 2, 3, 14, 1]
 const totalMinutes = 60
-const storageKey = 'shop6-agentic-workshop-timer-v4'
+const storageKey = 'shop6-agentic-workshop-timer-v5'
 const nav = useNav()
 const now = ref(Date.now())
 const slideNumber = computed(() => Math.min(slideMinutes.length, Math.max(1, nav.currentSlideNo.value)))
@@ -174,6 +173,13 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+:global(.slidev-layout) {
+  box-sizing: border-box;
+  padding-bottom: 64px !important;
+}
+:global(.slidev-layout .absolute.inset-0) {
+  padding-bottom: 64px !important;
+}
 .workshop-timer {
   position: fixed;
   z-index: 1000;

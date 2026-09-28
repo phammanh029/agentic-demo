@@ -21,7 +21,20 @@ How we ship with agents at Shop 6 — and how it can speed up your tasks
   <span class="rounded-full border border-slate-400 px-5 py-2">Bring a real task</span>
 </div>
 
+<div class="mt-7 flex items-center gap-4" aria-label="A playful agent passing work along">
+  <div class="agent-mascot animate-agent-bob rounded-2xl bg-[#2F6DB5] px-4 py-3 text-3xl text-white">🤖 <span class="text-sm font-semibold">agent</span></div>
+  <div class="agent-task animate-agent-pass rounded-xl border-2 border-[#D9772B] bg-white px-4 py-3 text-sm"><span class="font-semibold text-[#D9772B]">you</span> decide → next task</div>
+</div>
+
 <div class="mt-8 text-sm opacity-70">Shop 6 · Tue 29 Sept · CodeLeap office</div>
+
+<style>
+@keyframes agent-bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+@keyframes agent-pass { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(12px); } }
+.animate-agent-bob { animation: agent-bob 2s ease-in-out infinite; }
+.animate-agent-pass { animation: agent-pass 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .animate-agent-bob, .animate-agent-pass { animation: none; } }
+</style>
 
 <!--
 How Shop 6 works today, not a vendor demo. 60 minutes, one focused hands-on comparison, laptop optional. Keep a real task in mind for the end.
@@ -172,13 +185,17 @@ layout: section
 
 <div class="absolute inset-0 grid place-content-center bg-[#1E2530] px-20 text-center text-white">
   <h1 class="text-6xl font-bold">Now · Shop 6 agentic pipeline</h1>
-  <p class="mt-6 text-3xl">You set the workflow and the boundaries. Agents do the legwork.</p>
+  <p class="mt-5 text-2xl">Two live demos · two Shop 6 team members</p>
+  <p class="mt-3 text-xl">1 · Create and hand off the task &nbsp; → &nbsp; 2 · Implement end to end</p>
 </div>
 
 <!--
+Session 1: team member 1 refines the request, gathers context, drafts the issue, publishes it, and assigns Copilot. Session 2: team member 2 walks an assigned task through Spec Kit implementation, /review, human merge, docs sync, docs PR review, and the next-issue handoff. Use an approved live task/PR or clearly label any prepared fallback.
 -->
 
 ---
+
+<div class="mb-3 text-sm font-semibold text-[#2F6DB5]">LIVE DEMO 1 · TEAM MEMBER 1 · CREATE THE TASK</div>
 
 # Refine the ticket with what the whole fleet knows.
 
@@ -193,10 +210,12 @@ layout: section
 </div>
 
 <!--
-(Live demo.) The skill checks the ticket against wiki, docs and repo evidence and asks the smallest set of questions. Its output is a proposal; the team reviews it before anything is written back.
+Team member 1 checks the ticket against wiki, docs and repo evidence, then asks the smallest set of questions. This is a proposal; the team reviews it before anything is written back.
 -->
 
 ---
+
+<div class="mb-3 text-sm font-semibold text-[#2F6DB5]">LIVE DEMO 1 · TEAM MEMBER 1 · CREATE THE TASK</div>
 
 # Gather the context. Find the approach. Hand it over.
 
@@ -208,10 +227,12 @@ layout: section
 </div>
 
 <!--
-(Live demo.) The skill does the cross-repo digging we used to do by hand and saves a local issue draft with evidence and an approach. I publish that draft as a GitHub issue and assign it to the cloud agent. For implementation, Shop 6 uses Spec Kit to give the agent a structured plan and artifacts — that's where work leaves my machine, so it waits for me.
+Team member 1 runs `create-implementation-issue`, reviews the evidence-backed local draft, publishes it as a GitHub issue, and assigns Copilot. After handoff, they move to the next issue while Copilot works. Shop 6 uses Spec Kit for the implementation that follows.
 -->
 
 ---
+
+<div class="mb-3 text-sm font-semibold text-[#2F6DB5]">LIVE DEMO 2 · TEAM MEMBER 2 · IMPLEMENT END TO END</div>
 
 # /review — a verdict, not a vibe.
 
@@ -223,10 +244,12 @@ layout: section
 </div>
 
 <!--
-(Live demo.) /review returns a verdict with findings ranked by severity and concrete suggestions. Approve means ready for a human, never auto-merge. A person always merges.
+Team member 2 picks up an assigned Shop 6 task and shows the Spec Kit implementation, then runs `/review`. The verdict includes findings ranked by severity and concrete suggestions. Approve means ready for a human, never auto-merge. A person reads the evidence and merges.
 -->
 
 ---
+
+<div class="mb-3 text-sm font-semibold text-[#2F6DB5]">LIVE DEMO 2 · TEAM MEMBER 2 · IMPLEMENT END TO END</div>
 
 # After merge, the docs catch up.
 
@@ -238,7 +261,7 @@ layout: section
 </div>
 
 <!--
-Nobody starts this one. It runs after every merge, finds docs that no longer match the code, and opens a PR. The step people always skipped is no longer optional.
+After the human merge, nobody starts docs sync manually. It checks for docs that no longer match the code and opens a PR; team member 2 reviews that PR, then moves to the next issue.
 -->
 
 ---
@@ -252,7 +275,7 @@ Nobody starts this one. It runs after every merge, finds docs that no longer mat
 </div>
 <div class="mt-7 text-center text-sm">Also: [other tools we use]</div>
 <div class="mt-2 text-center text-xs">Sample: CodeGraph 181–205 ms (3 warm runs) · RTK <code>git log --stat -n 10</code>: 616 tokens saved (50.2% estimate)</div>
-<div class="mt-2 text-center text-sm"><a class="text-slate-800 underline" href="/downloads/shop6-agentic-skills.zip" download>Download Shop 6 issue + Spec Kit skills</a></div>
+<div class="mt-2 text-center text-sm"><a class="text-slate-800 underline" href="/downloads/resources.zip" download>Download skills + tool references</a></div>
 
 <!--
 Agents fail on bad context more than bad reasoning; these tools feed them the right context. CodeGraph answers "what calls this, what breaks if I change it" without reading half the repo. Three warm CodeGraph service runs of `JtlSearchAdapter searchProducts callers` took 181–205 ms. The local Shop 6 checkout has no CodeGraph index; the measured query used the existing shared graph. RTK reported 616 estimated tokens saved (50.2%) for `rtk git log --stat -n 10`; that is one command's estimate, not a general saving rate. rtk keeps command output short, so attention goes where it matters and it costs fewer tokens. [our measured saving, if any]
@@ -285,9 +308,10 @@ Agents fail on bad context more than bad reasoning; these tools feed them the ri
   <div class="rounded-xl border border-slate-300 p-3"><b>Spec-driven is our next step:</b> a better harness helps the agent deliver better results.</div>
   <div class="rounded-xl border border-slate-300 p-3"><b>Silly hypothetical:</b> “Make checkout faster.” <b>Agent:</b> removes checkout. Fastest checkout. 😅</div>
 </div>
+<div class="mt-3 text-center text-sm"><b>Hypothesis to test:</b> a full agentic workflow can outperform a standalone Superpowers skill as tasks grow more complex.</div>
 
 <!--
-Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agent or a newly created GitHub issue can trigger refinement, then Spec Kit-guided implementation and code review. A person still owns the merge. We believe spec-driven work is the next step: the better the harness, the better the results. Clear instructions help even a capable agent; ambiguity can confuse a smart one too. The checkout line is an intentionally silly hypothetical, not a Shop 6 incident.
+Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agent or a newly created GitHub issue can trigger refinement, then Spec Kit-guided implementation and code review. A person still owns the merge. We believe spec-driven work is the next step: the better the harness, the better the results. Our hypothesis is that a full end-to-end workflow can outperform a standalone Superpowers skill as tasks grow more complex; measure this in the pilot. Clear instructions help even a capable agent; ambiguity can confuse a smart one too. The checkout line is an intentionally silly hypothetical, not a Shop 6 incident.
 -->
 
 ---
@@ -362,24 +386,6 @@ These elapsed-time figures cover only sessions with both a start and end time in
 
 ---
 
-# Don't invent the benchmark.
-
-<table class="mt-8 w-full border-collapse text-xl">
-  <thead><tr><th></th><th>Before</th><th>Shop 6 now</th></tr></thead>
-  <tbody>
-    <tr><th>Hands-on time</th><td>[__ min]</td><td>[__ min]</td></tr>
-    <tr><th>Wall-clock time</th><td>[__ min]</td><td>[__ min]</td></tr>
-    <tr><th>Rework</th><td>[__ min]</td><td>[__ min]</td></tr>
-    <tr><th>Measured on</th><td>[ticket · date]</td><td>[ticket · date]</td></tr>
-  </tbody>
-</table>
-
-<!--
-One real ticket, both ways, rework included. If a number isn't flattering, say it. The gain is mostly attention freed up, not the agent typing faster.
--->
-
----
-
 # Pros & trade-offs: discuss what matters in your repo.
 
 <div class="mt-6 grid grid-cols-2 gap-8">
@@ -411,24 +417,24 @@ Discuss: which benefit would matter most in your repo, and which trade-off would
   <h1 class="text-4xl font-bold">Run the same task two ways.</h1>
   <div class="mt-6 grid grid-cols-2 gap-6">
     <div class="rounded-2xl border-2 border-slate-400 bg-white p-6">
-      <div class="text-xl font-bold">Legacy · prompt loop</div>
-      <div class="mt-3 text-lg">Use a Superpowers skill, such as <code>superpowers:brainstorming</code>. Gather context and build the issue draft step by step.</div>
+      <div class="text-xl font-bold">Prompt-only · manual loop</div>
+      <div class="mt-3 text-lg">Gather the same cross-repo context yourself. Prompt the model step by step to build the issue draft.</div>
     </div>
     <div class="rounded-2xl border-2 border-slate-400 bg-white p-6">
       <div class="text-xl font-bold">Agentic · Shop 6 skill</div>
-      <div class="mt-3 text-lg">The agent runs <code>create-implementation-issue</code>, gathers context, and saves a local issue draft.</div>
+      <div class="mt-3 text-lg">Run <code>create-implementation-issue</code>; it gathers evidence and saves a local issue draft. Follow the full pipeline in the two live demos.</div>
     </div>
   </div>
   <div class="mt-5 flex items-center justify-between gap-4 text-base">
     <span>6 minutes each · 2 minutes to compare time, evidence, and rework</span>
-    <a class="rounded-full bg-slate-200 px-4 py-2 font-semibold text-slate-900" href="/downloads/shop6-agentic-skills.zip" download>Download · extract at repo root</a>
+    <a class="rounded-full bg-slate-200 px-4 py-2 font-semibold text-slate-900" href="/downloads/resources.zip" download>Download resources · extract at repo root</a>
   </div>
   <div class="mt-3 text-xs">Local draft; a person publishes the GitHub issue. Spec Kit is required for substantial work; cloud-bootstrap can create missing artifacts.</div>
   <div class="mt-2 text-xs">No laptop? Follow the demo.</div>
 </div>
 
 <!--
-No pair work. Use the same small task and repo for both runs. Spend six minutes prompting step by step, for example with `superpowers:brainstorming`, then six minutes using `create-implementation-issue`; use the last two minutes to compare elapsed time, context/evidence captured, and rework in the draft. This ends at a local issue draft: the skill does not publish the GitHub issue. For substantial work, Shop 6 uses Spec Kit during implementation; the skill can use existing artifacts or choose cloud-bootstrap to create missing ones. Only behavior-preserving maintenance allowed by repo policy may skip Spec Kit.
+No pair work. Use the same small task and repo for both runs. Spend six minutes manually gathering context and prompting the model to build the issue draft, then six minutes using `create-implementation-issue`; use the last two minutes to compare elapsed time, evidence captured, and rework. This ends at a local issue draft: the skill does not publish the GitHub issue. Do not use Superpowers as the prompt-only control; it is itself an agentic skill. The two live demos show the full Shop 6 flow, including Spec Kit implementation. Our hypothesis is that the full workflow brings more value as task complexity grows; this short comparison does not prove it.
 -->
 
 ---

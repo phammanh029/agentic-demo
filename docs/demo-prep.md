@@ -24,15 +24,30 @@ The skill requires documentation to be treated as an implementation deliverable 
 - Prepare the current implementation review skill/process and identify which specs, tests, docs, examples, or operational guidance are in scope for this sample issue.
 - Run the Slidev audience view. The per-slide and 60-minute timers start automatically when the deck opens; revisit a slide to confirm its countdown resumes rather than resetting.
 
-## Prompt-driven baseline · 5.5 minutes
+## Live demo 1 · Create and hand off the task · 7 minutes
 
-Keep the engineer visibly responsible for each context transfer and handoff.
+Presenter: Shop 6 team member 1. Show the creation and handoff portion of the Shop 6 agentic pipeline.
 
-1. Manually inspect the relevant Shop 6 project and sibling projects; show where each issue fact comes from.
-2. Run or narrate the `create-implementation-issue` skill. Show the local draft and check its evidence, acceptance criteria, repository snapshots, and unknowns.
-3. Have the engineer carry the accepted draft to GitHub, publish it, and assign Copilot. If not approved for live use, use a labelled simulated issue.
-4. Show how the engineer monitors the Copilot result, collects fresh verification, and requests an independent code review.
-5. Check that the required documentation is updated and reviewed. Only then choose the next issue and note which context must be gathered again.
+1. Refine the task against wiki, docs, and sibling-repository evidence; pause for team review.
+2. Run `create-implementation-issue`; review the evidence-backed local issue draft.
+3. Publish the approved issue to GitHub and assign it to Copilot. After handoff, start the next issue while Copilot works.
+
+The skill ends at a local draft. The person publishes the GitHub issue and assigns Copilot.
+
+## Live demo 2 · Implement end to end · 8 minutes
+
+Presenter: Shop 6 team member 2. Pick up an assigned task and show the implementation return and completion gates.
+
+1. Show the task implemented using Shop 6's Spec Kit workflow.
+2. Run `/review`; inspect the verdict, severity-ranked findings, and suggestions.
+3. Read the evidence and merge as a person; the verdict never auto-merges.
+4. Show post-merge docs sync opening a docs PR, review it, then hand off to the next issue.
+
+Use an approved live task/PR or clearly label the prepared fallback. Do not fabricate test output or a review verdict.
+
+## Hands-on comparison · 14 minutes
+
+Use the same small task and repository for both runs: six minutes for a prompt-only manual context and drafting loop, six minutes for `create-implementation-issue`, and two minutes to compare elapsed time, evidence, and rework. Do not use Superpowers as the prompt-only control; it is itself an agentic skills workflow. This exercise ends at a local issue draft, while the two live demos show the full flow including Spec Kit implementation.
 
 Prompts to use one at a time:
 
@@ -52,12 +67,6 @@ unverified criteria and findings; do not claim completion without the required
 independent review verdict.
 ```
 
-## Shop 6 agentic pipeline demo · 16.5 minutes
-
-Use the same request and project snapshots so the comparison is fair. Let the agent carry context between steps, but pause at the explicit human checkpoints.
-
-The separate hands-on comparison gets 14 minutes: six minutes for the legacy prompt loop, six minutes for `create-implementation-issue`, then two minutes to compare evidence, elapsed time, and rework.
-
 ```text
 Work on one bounded Shop 6 issue using the create-implementation-issue workflow.
 First inspect the repository instructions and relevant owning and sibling projects.
@@ -72,7 +81,7 @@ the current issue meets its completion gates. Never invent paths, results, or
 review verdicts; do not merge or deploy.
 ```
 
-Show these checkpoints:
+Show these checkpoints in the live demos:
 
 - **Issue approval:** cross-project evidence supports the scope and acceptance criteria.
 - **Remote handoff:** a human approves GitHub publication and Copilot assignment.
