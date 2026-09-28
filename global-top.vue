@@ -56,7 +56,7 @@ const slideProgress = computed(() => activeSlideElapsed.value / (slideMinutes[sl
 const totalRemaining = computed(() => totalMinutes * 60_000 - state.value.totalElapsed - runningElapsed.value)
 const slideRingProgress = computed(() => Math.min(1, Math.max(0, 1 - slideProgress.value)))
 const totalProgress = computed(() => (state.value.totalElapsed + runningElapsed.value) / (totalMinutes * 60_000))
-const totalRingProgress = computed(() => Math.min(1, Math.max(0, 1 - totalProgress.value)))
+const totalRingProgress = computed(() => Math.min(1, Math.max(0, totalProgress.value)))
 const totalWarningClass = computed(() => {
   if (totalProgress.value >= 1) return 'warning-red'
   if (totalProgress.value >= 0.85) return 'warning-orange'
@@ -158,8 +158,8 @@ onBeforeUnmount(() => {
 <template>
   <aside class="workshop-timer" :class="warningClass" aria-label="Current slide and total workshop timer" @pointerdown.stop @touchstart.stop>
     <div class="timer-gauge" role="img" :aria-label="`Total remaining ${totalText}; slide ${slideNumber} remaining ${slideText}`">
-      <div class="gauge-total" :class="totalWarningClass" :style="{ '--remaining': `${totalRingProgress * 100}%` }">
-        <div class="gauge-slide" :class="warningClass" :style="{ '--remaining': `${slideRingProgress * 100}%` }">
+      <div class="gauge-total" :class="totalWarningClass" :style="{ '--progress': `${totalRingProgress * 100}%` }">
+        <div class="gauge-slide" :class="warningClass" :style="{ '--progress': `${slideRingProgress * 100}%` }">
           <strong :class="{ overtime: slideRemaining < 0 }">{{ slideText }}</strong>
         </div>
       </div>
@@ -219,11 +219,11 @@ onBeforeUnmount(() => {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: conic-gradient(var(--ring-color, #64748b) 0 var(--remaining), #e2e8f0 var(--remaining) 100%);
+  background: conic-gradient(var(--ring-color, #64748b) 0 var(--progress), #e2e8f0 var(--progress) 100%);
   transition: background 220ms linear;
 }
 .gauge-total { width: 56px; height: 56px; }
-.gauge-slide { width: 39px; height: 39px; background: conic-gradient(var(--ring-color, #64748b) 0 var(--remaining), #cbd5e1 var(--remaining) 100%); }
+.gauge-slide { width: 39px; height: 39px; background: conic-gradient(var(--ring-color, #64748b) 0 var(--progress), #cbd5e1 var(--progress) 100%); }
 .gauge-slide strong {
   display: grid;
   place-items: center;
