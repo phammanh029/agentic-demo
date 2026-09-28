@@ -54,6 +54,15 @@ const activeSlideElapsed = computed(() => state.value.slideElapsed[slideNumber.v
 const slideRemaining = computed(() => slideMinutes[slideNumber.value - 1] * 60_000 - activeSlideElapsed.value)
 const slideProgress = computed(() => activeSlideElapsed.value / (slideMinutes[slideNumber.value - 1] * 60_000))
 const totalRemaining = computed(() => totalMinutes * 60_000 - state.value.totalElapsed - runningElapsed.value)
+const slideRingProgress = computed(() => Math.min(1, Math.max(0, 1 - slideProgress.value)))
+const totalProgress = computed(() => (state.value.totalElapsed + runningElapsed.value) / (totalMinutes * 60_000))
+const totalRingProgress = computed(() => Math.min(1, Math.max(0, 1 - totalProgress.value)))
+const totalWarningClass = computed(() => {
+  if (totalProgress.value >= 1) return 'warning-red'
+  if (totalProgress.value >= 0.85) return 'warning-orange'
+  if (totalProgress.value >= 0.7) return 'warning-yellow'
+  return ''
+})
 const warningClass = computed(() => {
   if (slideRemaining.value < 0 || totalRemaining.value < 0 || slideProgress.value >= 1) return 'warning-red'
   if (slideProgress.value >= 0.85) return 'warning-orange'
@@ -148,10 +157,17 @@ onBeforeUnmount(() => {
 
 <template>
   <aside class="workshop-timer" :class="warningClass" aria-label="Current slide and total workshop timer" @pointerdown.stop @touchstart.stop>
-    <span class="clock-group"><span class="clock-label">SLIDE {{ slideNumber }}/{{ slideMinutes.length }}</span><strong :class="{ overtime: slideRemaining < 0 }">{{ slideText }}</strong></span>
-    <span class="divider">·</span>
-    <span class="clock-group"><span class="clock-label">TOTAL</span><strong :class="{ overtime: totalRemaining < 0 }">{{ totalText }}</strong></span>
-    <span v-if="warningText" class="overdue-label">{{ warningText }}</span>
+    <div class="timer-gauge" role="img" :aria-label="`Total remaining ${totalText}; slide ${slideNumber} remaining ${slideText}`">
+      <div class="gauge-total" :class="totalWarningClass" :style="{ '--remaining': `${totalRingProgress * 100}%` }">
+        <div class="gauge-slide" :class="warningClass" :style="{ '--remaining': `${slideRingProgress * 100}%` }">
+          <strong :class="{ overtime: slideRemaining < 0 }">{{ slideText }}</strong>
+        </div>
+      </div>
+    </div>
+    <div class="timer-readout">
+      <div class="clock-group"><span class="clock-label">TOTAL</span><strong :class="{ overtime: totalRemaining < 0 }">{{ totalText }}</strong></div>
+      <div class="clock-group"><span class="clock-label">SLIDE {{ slideNumber }}/{{ slideMinutes.length }}</span><span v-if="warningText" class="overdue-label">{{ warningText }}</span></div>
+    </div>
     <button class="timer-reset" aria-label="Reset workshop timer" @click.stop="reset">↺</button>
   </aside>
   <nav class="workshop-timeline" aria-label="Workshop section timeline" @pointerdown.stop @touchstart.stop>
@@ -187,29 +203,53 @@ onBeforeUnmount(() => {
   right: 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 7px;
+  gap: 8px;
+  padding: 5px 8px;
   border: 1px solid #cbd5e1;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.96);
   color: #1e2530;
   box-shadow: 0 2px 8px #0003;
-  font: 8px 'JetBrains Mono', monospace;
+  font: 9px 'JetBrains Mono', monospace;
   line-height: 1;
   white-space: nowrap;
 }
-.clock-group { display: flex; align-items: center; gap: 4px; }
+.timer-gauge { width: 56px; height: 56px; flex: none; }
+.gauge-total, .gauge-slide {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--ring-color, #64748b) 0 var(--remaining), #e2e8f0 var(--remaining) 100%);
+  transition: background 220ms linear;
+}
+.gauge-total { width: 56px; height: 56px; }
+.gauge-slide { width: 39px; height: 39px; background: conic-gradient(var(--ring-color, #64748b) 0 var(--remaining), #cbd5e1 var(--remaining) 100%); }
+.gauge-slide strong {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: #fff;
+  color: #1e2530;
+  font-size: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.timer-readout { display: grid; gap: 5px; }
+.clock-group { display: flex; align-items: center; gap: 6px; }
 .clock-label { color: #64748b; letter-spacing: .04em; }
-.clock-group strong { color: #1e2530; font-size: 10px; font-variant-numeric: tabular-nums; }
+.clock-group strong { color: #1e2530; font-size: 11px; font-variant-numeric: tabular-nums; }
 .clock-group strong.overtime { color: #b91c1c; }
+.warning-yellow { --ring-color: #eab308; }
+.warning-orange { --ring-color: #D9772B; }
+.warning-red { --ring-color: #dc2626; }
 .workshop-timer.warning-yellow { border-color: #eab308; background: #fefce8; }
 .workshop-timer.warning-orange { border-color: #D9772B; background: #fff7ed; }
 .workshop-timer.warning-red { border-color: #dc2626; background: #fff1f2; }
-.warning-yellow .clock-group strong { color: #a16207; }
-.warning-orange .clock-group strong { color: #c2410c; }
-.warning-red .clock-label, .warning-red .overdue-label { color: #b91c1c; }
+.workshop-timer.warning-yellow .clock-group strong { color: #a16207; }
+.workshop-timer.warning-orange .clock-group strong { color: #c2410c; }
+.workshop-timer.warning-red .clock-label, .workshop-timer.warning-red .overdue-label { color: #b91c1c; }
 .overdue-label { font-weight: 700; }
-.divider { color: #94a3b8; }
 .timer-reset {
   cursor: pointer;
   border: 1px solid #cbd5e1;
@@ -217,7 +257,7 @@ onBeforeUnmount(() => {
   padding: 3px 6px;
   background: #f1f5f9;
   color: #1e2530;
-  font: 8px 'JetBrains Mono', monospace;
+  font: 11px 'JetBrains Mono', monospace;
 }
 .timer-reset { padding-inline: 5px; }
 .timer-reset:hover { border-color: #64748b; }
