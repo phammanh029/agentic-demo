@@ -27,6 +27,7 @@ How we ship with agents at Shop 6 — and how it can speed up your tasks
 </div>
 
 <div class="mt-8 text-sm opacity-70">Shop 6 · Tue 29 Sept · CodeLeap office</div>
+<div class="mt-4"><a class="rounded-full bg-[#2F6DB5] px-4 py-2 text-sm font-semibold text-white" href="/downloads/resources.zip" download>Download workshop resources</a></div>
 
 <style>
 @keyframes agent-bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
@@ -351,10 +352,8 @@ Agents fail on bad context more than bad reasoning; these tools feed them the ri
   <div class="rounded-xl border border-slate-300 p-2"><b>Spec-driven is our next step:</b> a better harness helps the agent deliver better results.</div>
   <div class="rounded-xl border border-slate-300 p-2"><b>Silly hypothetical:</b> “Make checkout faster.” <b>Agent:</b> removes checkout. Fastest checkout. 😅</div>
 </div>
-<div class="mt-1 text-center text-sm"><b>Hypothesis to test:</b> a full agentic workflow can outperform a standalone Superpowers skill as tasks grow more complex.</div>
-
 <!--
-Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agent or a newly created GitHub issue can trigger refinement, then Spec Kit-guided implementation and code review. A person still owns the merge. We believe spec-driven work is the next step: the better the harness, the better the results. Our hypothesis is that a full end-to-end workflow can outperform a standalone Superpowers skill as tasks grow more complex; measure this in the pilot. Clear instructions help even a capable agent; ambiguity can confuse a smart one too. The checkout line is an intentionally silly hypothetical, not a Shop 6 incident.
+Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agent or a newly created GitHub issue can trigger refinement, then Spec Kit-guided implementation and code review. A person still owns the merge. We believe spec-driven work is the next step: the better the harness, the better the results. Clear instructions help even a capable agent; ambiguity can confuse a smart one too. The checkout line is an intentionally silly hypothetical, not a Shop 6 incident.
 -->
 
 ---
@@ -477,7 +476,7 @@ Discuss: which benefit would matter most in your repo, and which trade-off would
 </div>
 
 <!--
-No pair work. Use the same small task and repo for both runs. Spend six minutes manually gathering context and prompting the model to build the issue draft, then six minutes using `create-implementation-issue`; use the last two minutes to compare elapsed time, evidence captured, and rework. This ends at a local issue draft: the skill does not publish the GitHub issue. Do not use Superpowers as the prompt-only control; it is itself an agentic skill. The two live demos show the full Shop 6 flow, including Spec Kit implementation. Our hypothesis is that the full workflow brings more value as task complexity grows; this short comparison does not prove it.
+No pair work. Use the same small task and repo for both runs. Spend six minutes manually gathering context and prompting the model to build the issue draft, then six minutes using `create-implementation-issue`; use the last two minutes to compare elapsed time, evidence captured, and rework. This ends at a local issue draft: the skill does not publish the GitHub issue. Do not use Superpowers as the prompt-only control; it is itself an agentic skill. The two live demos show the full Shop 6 flow, including Spec Kit implementation.
 -->
 
 ---

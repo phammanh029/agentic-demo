@@ -26,6 +26,7 @@ const totalMinutes = 60
 const storageKey = 'shop6-agentic-workshop-timer-v6'
 const nav = useNav()
 const now = ref(Date.now())
+const shareHost = ref('')
 const slideNumber = computed(() => Math.min(slideMinutes.length, Math.max(1, nav.currentSlideNo.value)))
 const sectionIndex = computed(() => Math.max(0, sections.findIndex(section => slideNumber.value >= section.from && slideNumber.value <= section.to)))
 
@@ -140,6 +141,7 @@ function syncFromStorage(event: StorageEvent) {
 
 let heartbeat: number | undefined
 onMounted(() => {
+  shareHost.value = window.location.origin
   state.value = loadState()
   // Resume persisted elapsed time on the slide that was active before reload,
   // then begin (or continue) timing the slide currently open.
@@ -171,6 +173,10 @@ onBeforeUnmount(() => {
     </div>
     <button class="timer-reset" aria-label="Reset workshop timer" @click.stop="reset">↺</button>
   </aside>
+  <div v-if="slideNumber === 1 && shareHost" class="workshop-host-link">
+    <span>SHARE THIS DECK</span>
+    <a :href="`${shareHost}/`">{{ shareHost }}</a>
+  </div>
   <nav class="workshop-timeline" aria-label="Workshop section timeline" @pointerdown.stop @touchstart.stop>
     <div
       v-for="(section, index) in timeline"
@@ -263,6 +269,24 @@ onBeforeUnmount(() => {
 .timer-reset { padding-inline: 5px; }
 .timer-reset:hover { border-color: #64748b; }
 @media print { .workshop-timer { display: none; } }
+.workshop-host-link {
+  position: fixed;
+  z-index: 998;
+  right: 14px;
+  bottom: 64px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1px 6px #0002;
+  color: #475569;
+  font: 10px 'JetBrains Mono', monospace;
+}
+.workshop-host-link a { color: #2F6DB5; font-weight: 700; text-decoration: underline; }
+@media print { .workshop-host-link { display: none; } }
 .workshop-timeline {
   position: fixed;
   z-index: 999;

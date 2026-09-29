@@ -15,6 +15,14 @@ pnpm dev
 
 Open the audience view at `http://localhost:3030/` and the presenter view at `http://localhost:3030/presenter`. Slidev’s documented presenter mode keeps audience navigation synchronized while keeping notes in the presenter view. Use two browser windows; put the presenter window on the laptop/second display while sharing only the audience window.
 
+To share the deck and its downloads over the office network, run:
+
+```bash
+pnpm dev --remote
+```
+
+Open the **Network** URL printed by Slidev. The cover displays that host URL when opened through the network address, and its **Download workshop resources** button serves `resources.zip` from the same host. Share the audience URL, not `/presenter`. Add a password to the `--remote` option if presenter mode should be restricted.
+
 The `global-top.vue` layer shows an automatic per-slide countdown, a 60-minute total countdown, and a bottom section timeline. A slide timer starts on first open, resumes its accumulated time when revisited, and warns at 70%, 85%, and 100% of its budget. Timer state persists in localStorage; Reset asks for confirmation once timing has started.
 
 ## Export
