@@ -192,10 +192,10 @@ onBeforeUnmount(() => {
 <style scoped>
 :global(.slidev-layout) {
   box-sizing: border-box;
-  padding-bottom: 64px !important;
+  padding-bottom: 96px !important;
 }
 :global(.slidev-layout .absolute.inset-0) {
-  padding-bottom: 64px !important;
+  padding-bottom: 96px !important;
 }
 .workshop-timer {
   position: fixed;
@@ -312,5 +312,9 @@ onBeforeUnmount(() => {
 .timeline-section.current .timeline-progress { background: #334155; }
 .timeline-section.overdue .timeline-time { color: #b91c1c; font-weight: 700; }
 .timeline-section.overdue .timeline-progress { background: #dc2626; }
+:global(.compact-metrics th), :global(.compact-metrics td) {
+  padding: 4px 6px !important;
+  line-height: 1.15 !important;
+}
 @media print { .workshop-timeline { display: none; } }
 </style>

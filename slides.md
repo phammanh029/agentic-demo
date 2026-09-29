@@ -79,7 +79,7 @@ Take a quick show of hands, then invite two short answers: which tasks would peo
 
 <div class="mx-auto w-full max-w-full text-center">
 
-# Shop 6 today: an agentic pipeline
+# Agentic pipeline, in practice
 
 <p class="text-2xl">One ticket. Several repos. Agents do the legwork, people decide.</p>
 
@@ -133,36 +133,36 @@ Prompt-driven, you're the glue between every step. Agentic, you set the workflow
 
 <p class="text-xl text-slate-600">Six questions before you delegate</p>
 
-<div class="mt-6 grid grid-cols-3 gap-4">
+<div class="mt-4 grid grid-cols-3 gap-3">
   <div class="rounded-2xl border border-slate-300 bg-white p-5">
-    <div class="text-xl font-bold">Who are we?</div>
+    <div class="text-lg font-bold">Who are we?</div>
     <div class="mt-1 text-sm text-slate-600">Project, conventions, rules</div>
-    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> AGENTS.md, wiki, docs</div>
+    <div class="mt-2 border-t pt-2 text-sm"><b>Agentic:</b> AGENTS.md, wiki, docs</div>
   </div>
-  <div class="rounded-2xl border border-slate-300 bg-white p-5">
-    <div class="text-xl font-bold">What do we want?</div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-4">
+    <div class="text-lg font-bold">What do we want?</div>
     <div class="mt-1 text-sm text-slate-600">The outcome, and what “done” means</div>
-    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> refined ticket, acceptance criteria</div>
+    <div class="mt-2 border-t pt-2 text-sm"><b>Agentic:</b> refined ticket, acceptance criteria</div>
   </div>
-  <div class="rounded-2xl border border-slate-300 bg-white p-5">
-    <div class="text-xl font-bold">How do I verify it?</div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-4">
+    <div class="text-lg font-bold">How do I verify it?</div>
     <div class="mt-1 text-sm text-slate-600">Tests, evidence, who checks</div>
-    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> tests, /review verdict, docs-sync</div>
+    <div class="mt-2 border-t pt-2 text-sm"><b>Agentic:</b> tests, /review verdict, docs-sync</div>
   </div>
-  <div class="rounded-2xl border border-slate-300 bg-white p-5">
-    <div class="text-xl font-bold">What must it not touch?</div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-4">
+    <div class="text-lg font-bold">What must it not touch?</div>
     <div class="mt-1 text-sm text-slate-600">Scope and boundaries</div>
-    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> sibling repos read-only, issue scope</div>
+    <div class="mt-2 border-t pt-2 text-sm"><b>Agentic:</b> sibling repos read-only, issue scope</div>
   </div>
-  <div class="rounded-2xl border border-slate-300 bg-white p-5">
-    <div class="text-xl font-bold">When should it stop and ask?</div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-4">
+    <div class="text-lg font-bold">When should it stop and ask?</div>
     <div class="mt-1 text-sm text-slate-600">Uncertainty, risky areas, repeated failures</div>
-    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> team review, assign gate, three-failed-fixes rule</div>
+    <div class="mt-2 border-t pt-2 text-sm"><b>Agentic:</b> team review, assign gate, three-failed-fixes rule</div>
   </div>
-  <div class="rounded-2xl border border-slate-300 bg-white p-5">
-    <div class="text-xl font-bold">What happens if it’s wrong?</div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-4">
+    <div class="text-lg font-bold">What happens if it’s wrong?</div>
     <div class="mt-1 text-sm text-slate-600">The blast radius</div>
-    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> decides in-loop, cloud agent, or a workflow on its own</div>
+    <div class="mt-2 border-t pt-2 text-sm"><b>Agentic:</b> decides in-loop, cloud agent, or a workflow on its own</div>
   </div>
 </div>
 
@@ -227,8 +227,8 @@ layout: section
 ---
 
 <div class="absolute inset-0 grid place-content-center bg-[#1E2530] px-20 text-center text-white">
-  <h1 class="text-6xl font-bold">Now · Shop 6 agentic pipeline</h1>
-  <p class="mt-5 text-2xl">Two live demos · two Shop 6 team members</p>
+  <h1 class="text-6xl font-bold">Agentic pipeline</h1>
+  <p class="mt-5 text-2xl">Two live demos · two team members</p>
   <p class="mt-3 text-xl">1 · Create and hand off the task &nbsp; → &nbsp; 2 · Implement end to end</p>
 </div>
 
@@ -330,28 +330,28 @@ Agents fail on bad context more than bad reasoning; these tools feed them the ri
 
 # Start the workflow from the ticket.
 
-<div class="mt-8 grid grid-cols-[1.2fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-2 text-center">
-  <div class="space-y-3">
-    <div class="rounded-xl border-2 border-slate-300 p-4">Jira assigned to agent</div>
+<div class="mt-4 grid grid-cols-[1.2fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-2 text-center">
+  <div class="space-y-2">
+    <div class="rounded-xl border-2 border-slate-300 p-3 text-base leading-tight">Jira assigned to agent</div>
     <div class="text-xs font-semibold tracking-widest text-slate-500">OR</div>
-    <div class="rounded-xl border-2 border-slate-300 p-4">GitHub issue created</div>
+    <div class="rounded-xl border-2 border-slate-300 p-3 text-base leading-tight">GitHub issue created</div>
   </div>
   <div class="text-3xl text-slate-500">→</div>
-  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">workflow</div>Refine ticket</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-3 text-white"><div class="mb-2 text-sm">workflow</div>Refine ticket</div>
   <div class="text-3xl text-slate-500">→</div>
-  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">agent</div>Spec Kit</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-3 text-white"><div class="mb-2 text-sm">agent</div>Spec Kit</div>
   <div class="text-3xl text-slate-500">→</div>
-  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">agent</div>Implement</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-3 text-white"><div class="mb-2 text-sm">agent</div>Implement</div>
   <div class="text-3xl text-slate-500">→</div>
-  <div class="rounded-2xl bg-[#2F6DB5] p-5 text-white"><div class="mb-2 text-sm">workflow</div>Code review</div>
+  <div class="rounded-2xl bg-[#2F6DB5] p-3 text-white"><div class="mb-2 text-sm">workflow</div>Code review</div>
   <div class="text-3xl text-slate-500">→</div>
-  <div class="rounded-2xl bg-[#D9772B] p-5 text-white"><div class="mb-2 text-sm">you</div>Merge</div>
+  <div class="rounded-2xl bg-[#D9772B] p-3 text-white"><div class="mb-2 text-sm">you</div>Merge</div>
 </div>
-<div class="mt-5 grid grid-cols-2 gap-4 text-center text-sm">
-  <div class="rounded-xl border border-slate-300 p-3"><b>Spec-driven is our next step:</b> a better harness helps the agent deliver better results.</div>
-  <div class="rounded-xl border border-slate-300 p-3"><b>Silly hypothetical:</b> “Make checkout faster.” <b>Agent:</b> removes checkout. Fastest checkout. 😅</div>
+<div class="mt-3 grid grid-cols-2 gap-3 text-center text-sm">
+  <div class="rounded-xl border border-slate-300 p-2"><b>Spec-driven is our next step:</b> a better harness helps the agent deliver better results.</div>
+  <div class="rounded-xl border border-slate-300 p-2"><b>Silly hypothetical:</b> “Make checkout faster.” <b>Agent:</b> removes checkout. Fastest checkout. 😅</div>
 </div>
-<div class="mt-3 text-center text-sm"><b>Hypothesis to test:</b> a full agentic workflow can outperform a standalone Superpowers skill as tasks grow more complex.</div>
+<div class="mt-1 text-center text-sm"><b>Hypothesis to test:</b> a full agentic workflow can outperform a standalone Superpowers skill as tasks grow more complex.</div>
 
 <!--
 Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agent or a newly created GitHub issue can trigger refinement, then Spec Kit-guided implementation and code review. A person still owns the merge. We believe spec-driven work is the next step: the better the harness, the better the results. Our hypothesis is that a full end-to-end workflow can outperform a standalone Superpowers skill as tasks grow more complex; measure this in the pilot. Clear instructions help even a capable agent; ambiguity can confuse a smart one too. The checkout line is an intentionally silly hypothetical, not a Shop 6 incident.
@@ -365,21 +365,21 @@ Future plan: apply GitHub Agentic Workflows so a Jira ticket assigned to an agen
   <thead><tr><th></th><th>Refine</th><th>Issue + context</th><th>Publish + assign</th><th>Implement</th><th>Review</th><th>Docs</th></tr></thead>
   <tbody>
     <tr><th>Before</th><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span> / AI chat</td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span> (if time)</td></tr>
-    <tr><th>Shop 6 now</th><td><span class="rounded bg-[#2F6DB5] px-1 text-white">agent</span> → <span class="rounded bg-[#D9772B] px-1 text-white">team reviews</span></td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">agent</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">cloud agent</span></td><td>/review → <span class="rounded bg-[#D9772B] px-1 text-white">you</span> merge</td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">workflow</span> → <span class="rounded bg-[#D9772B] px-1 text-white">you</span> review PR</td></tr>
+    <tr><th>Agentic</th><td><span class="rounded bg-[#2F6DB5] px-1 text-white">agent</span> → <span class="rounded bg-[#D9772B] px-1 text-white">team reviews</span></td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">agent</span></td><td><span class="rounded bg-[#D9772B] px-1 text-white">you</span></td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">cloud agent</span></td><td>/review → <span class="rounded bg-[#D9772B] px-1 text-white">you</span> merge</td><td><span class="rounded bg-[#2F6DB5] px-1 text-white">workflow</span> → <span class="rounded bg-[#D9772B] px-1 text-white">you</span> review PR</td></tr>
   </tbody>
 </table>
 
 <!--
-Same steps. Before, you did almost all of them. Now agents do the legwork and people sit at the gates. Accountability didn't move — your name is still on the merge.
+Same steps. Before, you did almost all of them. Agents handle the legwork and people sit at the gates. Accountability didn't move — your name is still on the merge.
 -->
 
 ---
 
 <div class="mx-auto max-w-6xl">
 
-# Shop 6 agent activity by repository
+# Agent activity by repository
 
-<table class="mt-5 w-full border-collapse text-center text-sm">
+<table class="compact-metrics mt-3 w-full border-collapse text-center text-sm">
   <thead><tr><th class="p-2 text-left">Repository</th><th>Tasks</th><th>PR-linked</th><th>Sessions</th><th>Completed</th><th>Failed</th><th>Cancelled</th></tr></thead>
   <tbody>
     <tr><th class="p-2 text-left">Shop standards</th><td>21</td><td>21</td><td>47</td><td>20</td><td>0</td><td>1</td></tr>
@@ -464,7 +464,7 @@ Discuss: which benefit would matter most in your repo, and which trade-off would
       <div class="mt-3 text-lg">Gather the same cross-repo context yourself. Prompt the model step by step to build the issue draft.</div>
     </div>
     <div class="rounded-2xl border-2 border-slate-400 bg-white p-6">
-      <div class="text-xl font-bold">Agentic · Shop 6 skill</div>
+      <div class="text-xl font-bold">Agentic · issue-drafting skill</div>
       <div class="mt-3 text-lg">Run <code>create-implementation-issue</code>; it gathers evidence and saves a local issue draft. Follow the full pipeline in the two live demos.</div>
     </div>
   </div>
@@ -472,8 +472,8 @@ Discuss: which benefit would matter most in your repo, and which trade-off would
     <span>6 minutes each · 2 minutes to compare time, evidence, and rework</span>
     <a class="rounded-full bg-slate-200 px-4 py-2 font-semibold text-slate-900" href="/downloads/resources.zip" download>Download resources · extract at repo root</a>
   </div>
-  <div class="mt-3 text-xs">Local draft; a person publishes the GitHub issue. Spec Kit is required for substantial work; cloud-bootstrap can create missing artifacts.</div>
-  <div class="mt-2 text-xs">No laptop? Follow the demo.</div>
+  <div class="mt-2 text-xs">Local draft; a person publishes the GitHub issue. Spec Kit is required for substantial work; cloud-bootstrap can create missing artifacts.</div>
+  <div class="mt-1 text-xs">No laptop? Follow the demo.</div>
 </div>
 
 <!--
