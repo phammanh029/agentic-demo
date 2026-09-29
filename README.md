@@ -29,7 +29,7 @@ pnpm export:notes
 
 ## Contents
 
-- `slides.md` — 21-slide workshop deck with speaker notes, Shop 6 pipeline, two live demo sessions, comparison activity, and repository metrics.
+- `slides.md` — 22-slide workshop deck with speaker notes, the six-question delegation framework, Shop 6 pipeline, two live demo sessions, comparison activity, and repository metrics.
 - `global-top.vue` — per-slide timer, total timer, and section timeline.
 - `public/downloads/shop6-agentic-skills.zip` — downloadable Shop 6 skills for the hands-on comparison.
 - `public/downloads/resources.zip` — Shop 6 skills plus a reference sheet for Superpowers, rtk, CodeGraph, Spec Kit, and GitHub Agentic Workflows. The cover slide links to it.

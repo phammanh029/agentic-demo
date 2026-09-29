@@ -128,6 +128,49 @@ Prompt-driven, you're the glue between every step. Agentic, you set the workflow
 -->
 
 ---
+
+# The agentic approach
+
+<p class="text-xl text-slate-600">Six questions before you delegate</p>
+
+<div class="mt-6 grid grid-cols-3 gap-4">
+  <div class="rounded-2xl border border-slate-300 bg-white p-5">
+    <div class="text-xl font-bold">Who are we?</div>
+    <div class="mt-1 text-sm text-slate-600">Project, conventions, rules</div>
+    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> AGENTS.md, wiki, docs</div>
+  </div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-5">
+    <div class="text-xl font-bold">What do we want?</div>
+    <div class="mt-1 text-sm text-slate-600">The outcome, and what “done” means</div>
+    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> refined ticket, acceptance criteria</div>
+  </div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-5">
+    <div class="text-xl font-bold">How do I verify it?</div>
+    <div class="mt-1 text-sm text-slate-600">Tests, evidence, who checks</div>
+    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> tests, /review verdict, docs-sync</div>
+  </div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-5">
+    <div class="text-xl font-bold">What must it not touch?</div>
+    <div class="mt-1 text-sm text-slate-600">Scope and boundaries</div>
+    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> sibling repos read-only, issue scope</div>
+  </div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-5">
+    <div class="text-xl font-bold">When should it stop and ask?</div>
+    <div class="mt-1 text-sm text-slate-600">Uncertainty, risky areas, repeated failures</div>
+    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> team review, assign gate, three-failed-fixes rule</div>
+  </div>
+  <div class="rounded-2xl border border-slate-300 bg-white p-5">
+    <div class="text-xl font-bold">What happens if it’s wrong?</div>
+    <div class="mt-1 text-sm text-slate-600">The blast radius</div>
+    <div class="mt-3 border-t pt-3 text-base"><b>Shop 6:</b> decides in-loop, cloud agent, or a workflow on its own</div>
+  </div>
+</div>
+
+<!--
+Before delegating, answer these six questions for the agent: who the project is, what outcome is wanted, how the result will be verified, what is out of scope, when to stop and ask, and what happens if the result is wrong. Shop 6 answers them through repository guidance, refined tickets and acceptance criteria, tests and review, read-only sibling repos, human review and assignment gates, and different execution modes for different blast radii.
+-->
+
+---
 layout: section
 ---
 

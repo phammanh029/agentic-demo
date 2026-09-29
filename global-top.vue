@@ -12,17 +12,18 @@ type TimerState = {
 const sections = [
   { from: 1, to: 3, label: 'WHY' },
   { from: 4, to: 5, label: 'OVERVIEW' },
-  { from: 6, to: 8, label: 'BEFORE' },
-  { from: 9, to: 15, label: 'SHOP 6' },
-  { from: 16, to: 18, label: 'COMPARE' },
-  { from: 19, to: 19, label: 'DISCUSS' },
-  { from: 20, to: 21, label: 'TRY + CLOSE' },
+  { from: 6, to: 6, label: 'APPROACH' },
+  { from: 7, to: 9, label: 'BEFORE' },
+  { from: 10, to: 16, label: 'SHOP 6' },
+  { from: 17, to: 19, label: 'COMPARE' },
+  { from: 20, to: 20, label: 'DISCUSS' },
+  { from: 21, to: 22, label: 'TRY + CLOSE' },
 ]
-// Per-slide budgets total 60 minutes. The extra two minutes support the
-// second live demo's review and documentation steps.
-const slideMinutes = [1, 2, 2, 3, 2, 0.5, 3, 2, 0.5, 3, 4, 4, 4, 3, 2, 2, 2, 2, 3, 14, 1]
+// Per-slide budgets total 60 minutes. The approach slide takes one minute
+// each from the loop comparison and pros/cons discussion.
+const slideMinutes = [1, 2, 2, 3, 1, 2, 0.5, 3, 2, 0.5, 3, 4, 4, 4, 3, 2, 2, 2, 2, 2, 14, 1]
 const totalMinutes = 60
-const storageKey = 'shop6-agentic-workshop-timer-v5'
+const storageKey = 'shop6-agentic-workshop-timer-v6'
 const nav = useNav()
 const now = ref(Date.now())
 const slideNumber = computed(() => Math.min(slideMinutes.length, Math.max(1, nav.currentSlideNo.value)))
